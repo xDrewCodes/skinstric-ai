@@ -1,7 +1,13 @@
 
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const Nav = () => {
+
+    const pg = window.location.pathname
+
+    console.log(pg)
+
     return (
         <nav>
             <div className="nav__title">

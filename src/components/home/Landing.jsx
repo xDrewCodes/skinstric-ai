@@ -5,6 +5,9 @@ import LandingOutline from '../../assets/imports/landing-outline.png'
 import React from 'react'
 
 const Landing = () => {
+
+    let navigate = useNavigate()
+
     return (
         <section id="home">
             <div className="landing__discover">
@@ -22,7 +25,7 @@ const Landing = () => {
                 <img src={LandingOutline} alt="" className="landing__test--outline" />
                 <h4 className="landing__test--option">
                     take test
-                    <img src={LandingButton} alt="Test" onClick={useNavigate('/introduction')} />
+                    <img src={LandingButton} alt="Test" onClick={() => navigate('/introduction')} />
                 </h4>
             </div>
             <div className="landing__fine">
