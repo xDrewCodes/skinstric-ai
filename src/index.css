@@ -81,33 +81,49 @@ nav * {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.5s ease;
 }
 
-.landing__discover,
-.landing__test {
-  width: 425.7px;
-  height: 425.7px;
-  border: 2px #A0A4AB dotted;
-  rotate: 45deg;
+.landing__discover--outline,
+.landing__test--outline {
+  width: 301px;
+  height: 602px;
+  top: calc(50% - 274px);
   display: flex;
+  position: absolute;
 }
 
-.landing__discover {
-  margin-left: -213px;
-  align-items: start;
-  justify-content: end;
+.landing__test--outline {
+  right: 0;
+  rotate: 180deg;
 }
 
-.landing__test {
-  margin-right: -213px;
-}
-
-.landing__option {
+.landing__discover--option,
+.landing__test--option {
   font-size: 14px;
   color: #777;
   text-transform: uppercase;
-  rotate: -45deg;
+  width: fit-content;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin: 0 16px;
 }
+
+.landing__test--option {
+  right: 0;
+}
+
+.landing__test--option img {
+  rotate: 180deg;
+}
+
+.landing__discover--option img,
+.landing__test--option img {
+  margin: 0 16px;
+  cursor: pointer;
+}
+
 
 .landing__fine {
   position: absolute;
