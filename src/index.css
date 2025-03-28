@@ -600,8 +600,20 @@ nav * {
   margin-left: 12px;
   color: #fff;
   background-color: #1a1b1c;
+  transition: all 0.2s ease;
+}
+
+.analysis__buttons--confirm:hover {
+  background-color: #a0a4ab;
+  color: black;
 }
 
 .analysis__buttons--reset {
   border: 2px #1a1b1c solid !important;
+  transition: all 0.2s ease;
+}
+
+.analysis__buttons--reset:hover {
+  background-color: #a0a4ab;
+  border-color: #a0a4ab !important;
 }
