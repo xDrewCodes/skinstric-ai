@@ -69,18 +69,36 @@ input::placeholder {
   color: #1a1b1c;
 }
 
-.back {
+.back,
+.proceed {
   display: flex;
   align-items: center;
-  position: absolute;
-  left: 32px;
+  position: fixed;
   bottom: 32px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -.25px;
+  text-transform: uppercase;
+}
+
+.back {
+  left: 32px;
 }
 
 .back img {
   margin-right: 16px;
 }
+
+.proceed {
+  right: 32px;
+}
+
+.proceed img {
+  margin-left: 16px;
+  rotate: 180deg;
+}
+
 
 
 /* NAV */
