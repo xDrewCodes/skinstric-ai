@@ -395,3 +395,225 @@ nav * {
   margin-left: 16px;
 }
 
+
+/* ANALYSIS */
+
+#analysis {
+  display: flex;
+  justify-content: center;
+}
+
+#analysis .section-subhead {
+  height: 240px;
+  width: calc( 100% - 64px );
+  margin-bottom: 32px;
+}
+
+.analysis__title {
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 64px;
+  text-transform: uppercase;
+  letter-spacing: -5px;
+  margin-top: 8px;
+  margin-left: -5px;
+}
+
+.analysis__subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+.analysis__info {
+  position: absolute;
+  height: 540px;
+  width: calc( 100% - 64px );
+  bottom: 112px;
+  display: flex;
+}
+
+.analysis__info--buttons {
+  width: 200px;
+  height: 100%;
+}
+
+.analysis__info--button {
+  background-color: #f3f3f4;
+  width: 200px;
+  height: 100px;
+  line-height: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  border-top: 1px #000 solid;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.analysis__info--button:hover {
+  background-color: #e1e1e2;
+}
+
+.analysis__info--button--selected {
+  background-color: #1a1b1c;
+}
+
+.analysis__info--button--selected:hover {
+  background-color: #1a1b1c;
+}
+
+.analysis__info--button--selected h5 {
+  color: #fff;
+}
+
+.analysis__info--button:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.analysis__info--graphic {
+  height: 100%;
+  width: 100%;
+  background-color: #f3f3f4;
+  margin: 0 16px;
+  padding: 22px 16px;
+  border-top: 1px #1a1b1c solid;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: -2px;
+  position: relative;
+}
+
+.analysis__info--graphic--chart {
+  max-width: 380px;
+  width: calc(100% - 32px);
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  border: 2px #1a1b1c solid;
+  position: absolute;
+  bottom: 22px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.analysis__info--breakdown {
+  background-color: #f3f3f4;
+  width: 650px;
+  height: 100%;
+  border-top: 1px #1a1b1c solid;
+}
+
+.analysis__info--breakdown--title {
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.analysis__info--breakdown--title h5 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: #1a1b1c;
+}
+
+.analysis__info--breakdown--item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -.25px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.analysis__info--breakdown--item:hover {
+  background-color: #e1e1e2;
+}
+
+.analysis__info--breakdown--item h5 {
+  transform: translateY(-2px);
+}
+
+.analysis__info--breakdown--item h5 img {
+  margin-right: 10px;
+  transform: translateY(2px);
+}
+
+.analysis__info--breakdown--item--selected {
+  background-color: #1a1b1c;
+}
+
+.analysis__info--breakdown--item--selected:hover {
+  background-color: #1a1b1c;
+}
+
+.analysis__info--breakdown--item--selected h5 {
+  color: #fff;
+}
+
+.analysis__ai-imperfect {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -1px;
+  color: #a0a4ab;
+  bottom: 42px;
+}
+
+.analysis__buttons {
+  position: absolute;
+  bottom: 35px;
+  right: 32px;
+}
+
+.analysis__buttons button {
+  outline: none;
+  border: none;
+  padding: 0 16px;
+  height: 35px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.analysis__buttons--confirm {
+  margin-left: 12px;
+  color: #fff;
+  background-color: #1a1b1c;
+  transition: all 0.2s ease;
+}
+
+.analysis__buttons--confirm:hover {
+  background-color: #a0a4ab;
+  color: black;
+}
+
+.analysis__buttons--reset {
+  border: 2px #1a1b1c solid !important;
+  transition: all 0.2s ease;
+}
+
+.analysis__buttons--reset:hover {
+  background-color: #a0a4ab;
+  border-color: #a0a4ab !important;
+}
