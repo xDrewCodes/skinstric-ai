@@ -27,7 +27,7 @@ const AnalysisMenu = () => {
                     <div className="analysis-menu__panel--button"><h4>Weather</h4></div>
                 </div>
             </div>
-            <div className="back" onClick={() => navigate(-1)}>
+            <div className="back" onClick={() => navigate('/upload')}>
                 <img src={BackButton} alt="" />
                 Back
             </div>
