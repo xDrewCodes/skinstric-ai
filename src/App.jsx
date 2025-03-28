@@ -6,6 +6,7 @@ import Intro from './pages/Intro';
 import Birthplace from './pages/Birthplace';
 import Upload from './pages/Upload';
 import Preparing from './pages/Preparing';
+import AnalysisMenu from './pages/AnalysisMenu';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/birthplace' element={ <Birthplace /> } />
         <Route path='/upload' element={ <Upload /> } />
         <Route path='/preparing' element={ <Preparing /> } />
+        <Route path='/analysis-menu' element={ <AnalysisMenu /> } />
       </Routes>
     </Router>
   )
