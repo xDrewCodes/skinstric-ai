@@ -519,6 +519,7 @@ nav * {
   font-weight: 400;
   line-height: 40px;
   letter-spacing: -2px;
+  text-transform: capitalize;
   position: relative;
 }
 
