@@ -1,16 +1,13 @@
 
 
-import { useNavigate } from 'react-router-dom'
-import BackButton from '../assets/imports/button.png'
 import BirthplaceOutline1 from '../assets/imports/outline.png'
 import BirthplaceOutline2 from '../assets/imports/outline2.png'
 import BirthplaceOutline3 from '../assets/imports/outline3.png'
 import React from 'react'
+import BackButton from '../components/ui/BackButton'
+import ProceedButton from '../components/ui/ProceedButton'
 
 const Birthplace = () => {
-
-    let navigate = useNavigate()
-
     return (
         <section id="birthplace">
             <div className="intro__outline">
@@ -23,10 +20,10 @@ const Birthplace = () => {
                 <legend>click to type</legend>
                 <input type="text" placeholder="Where are you from?" />
             </div>
-            <div className="back" onClick={() => navigate('/introduction')}>
-                <img src={BackButton} alt="Go Back" />
-                Back
-            </div>
+
+            <BackButton loc="/introduction" />
+            <ProceedButton loc="/upload" />
+
         </section>
     )
 }

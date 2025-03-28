@@ -13,7 +13,7 @@ const Nav = () => {
                 <div className="nav__title">
                     <h4 className="nav__logo">Skinstric</h4>
                     {
-                        pg.pathname == '/analysis' || pg.pathname =='/analysis-menu'
+                        pg.pathname === '/analysis' || pg.pathname === '/analysis-menu'
                         ?
                         <h4 className="nav__crumb">[ Analysis ]</h4>
                         :
@@ -22,7 +22,7 @@ const Nav = () => {
                 </div>
             }
             {
-                pg.pathname == '/' &&
+                pg.pathname === '/' &&
                 <button className="nav__btn">enter code</button>
             }
         </nav>

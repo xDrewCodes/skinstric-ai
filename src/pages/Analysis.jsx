@@ -1,14 +1,10 @@
 
 import React from 'react'
-import BackButton from '../assets/imports/button.png'
-import { useNavigate } from 'react-router-dom'
 import AnalysisChoices from '../components/ui/AnalysisChoices'
 import AnalysisBreakdown from '../components/ui/AnalysisBreakdown'
+import BackButton from '../components/ui/BackButton'
 
 const Analysis = () => {
-
-    let navigate = useNavigate()
-
     return (
         <section id="analysis">
             <div className="section-subhead">A.I. Analysis
@@ -26,10 +22,8 @@ const Analysis = () => {
                 <AnalysisBreakdown />
             </div>
             
-            <div className="back" onClick={() => navigate('/analysis-menu')}>
-                <img src={BackButton} alt="" />
-                Back
-            </div>
+            <BackButton loc="/analysis-menu" />
+
             <div className="analysis__ai-imperfect">If A.I. estimate is wrong, select the correct one.</div>
             <div className="analysis__buttons">
                 <button className="analysis__buttons--reset">Reset</button>
