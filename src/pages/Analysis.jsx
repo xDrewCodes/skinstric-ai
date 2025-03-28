@@ -1,10 +1,19 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import AnalysisChoices from '../components/ui/AnalysisChoices'
 import AnalysisBreakdown from '../components/ui/AnalysisBreakdown'
 import BackButton from '../components/ui/BackButton'
 
 const Analysis = () => {
+
+    const [ demo, setDemo ] = useState('race')
+
+    let demos = {
+        'race': 'Caucasian',
+        'age': '15-19',
+        'sex': 'Male'
+    }
+
     return (
         <section id="analysis">
             <div className="section-subhead">A.I. Analysis
@@ -13,13 +22,13 @@ const Analysis = () => {
             </div>
 
             <div className="analysis__info">
-                <AnalysisChoices />
-                <div className="analysis__info--graphic">Caucasian
+                <AnalysisChoices setDemo={setDemo} demo={demo} demos={demos} />
+                <div className="analysis__info--graphic">{ demos[demo] }
                     <div className="analysis__info--graphic--chart">
                         100%
                     </div>
                 </div>
-                <AnalysisBreakdown />
+                <AnalysisBreakdown demo={demo} demos={demos} />
             </div>
             
             <BackButton loc="/analysis-menu" />

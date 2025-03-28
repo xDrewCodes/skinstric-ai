@@ -3,11 +3,11 @@ import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
 import React from 'react'
 
-const AnalysisBreakdown = () => {
+const AnalysisBreakdown = ({ demo, demos }) => {
     return (
         <div className="analysis__info--breakdown">
                     <div className="analysis__info--breakdown--title">
-                        <h5>Race</h5>
+                        <h5>{demo}</h5>
                         <h5>A.I. Confidence</h5>
                     </div>
 
