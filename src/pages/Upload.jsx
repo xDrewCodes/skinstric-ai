@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom'
 import BackButton from '../components/ui/BackButton'
 import UploadOutline1 from '../assets/imports/outline.png'
@@ -8,10 +7,33 @@ import CameraIcon from '../assets/imports/shutter.png'
 import GalleryIcon from '../assets/imports/gallery.png'
 import React from 'react'
 import ProceedButton from '../components/ui/ProceedButton'
+import axios from 'axios'
 
-const Upload = () => {
+const Upload = ({ setDemos }) => {
 
     let navigate = useNavigate()
+
+    function askFile() {
+        document.querySelector('#gallery__input').click()
+    }
+
+    function savePicture(base64String) {
+        navigate('/preparing')
+        submitImage(base64String)
+    }
+
+    async function submitImage(img) {
+        const result = await axios({
+            method: 'POST',
+            data: {
+                image: img
+            },
+            url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo'
+        })
+        setDemos(result.data.data)
+        console.log(result.data.data)
+        navigate('/analysis-menu')
+    }
 
     return (
         <section id="upload">
@@ -33,7 +55,29 @@ const Upload = () => {
                     <img src={UploadOutline2} alt="" />
                     <img src={UploadOutline3} alt="" />
                 </div>
-                <img src={GalleryIcon} alt="" className="gallery__icon" />
+                <img
+                    onClick={askFile}
+                    src={GalleryIcon}
+                    alt=""
+                    className="gallery__icon"
+                />
+                <input
+                    onChange={(e) => {
+                        const file = e.target.files[0]
+                        if (file) {
+                            const reader = new FileReader()
+                            reader.onloadend = function () {
+                                savePicture(reader.result)
+
+                            };
+                            reader.readAsDataURL(file)
+                        }
+                    }}
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    id="gallery__input"
+                    style={{ display: 'none' }}
+                />
                 <div className="gallery__title">
                     Allow A.I.<br />To Access Gallery
                 </div>

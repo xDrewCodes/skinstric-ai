@@ -8,8 +8,12 @@ import Upload from './pages/Upload';
 import Preparing from './pages/Preparing';
 import AnalysisMenu from './pages/AnalysisMenu';
 import Analysis from './pages/Analysis';
+import { useState } from 'react';
 
 function App() {
+
+  const [demos, setDemos] = useState()
+
   return (
     <Router>
       <Nav />
@@ -17,10 +21,10 @@ function App() {
         <Route path='/' exact element={ <Home /> } />
         <Route path='/introduction' element={ <Intro /> } />
         <Route path='/location' element={ <Location /> } />
-        <Route path='/upload' element={ <Upload /> } />
+        <Route path='/upload' element={ <Upload setDemos={setDemos} /> } />
         <Route path='/preparing' element={ <Preparing /> } />
         <Route path='/analysis-menu' element={ <AnalysisMenu /> } />
-        <Route path='/analysis' element={ <Analysis /> } />
+        <Route path='/analysis' element={ <Analysis demos={demos} /> } />
       </Routes>
     </Router>
   )
