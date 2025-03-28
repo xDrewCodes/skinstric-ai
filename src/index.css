@@ -136,7 +136,7 @@ nav * {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.5s ease;
+  transition: all .5s ease;
 }
 
 .landing__discover--outline,
@@ -236,7 +236,7 @@ nav * {
   display: flex;
   justify-content: center;
   align-items: center;
-  scale: 0.7;
+  scale: .7;
 }
 
 .upload__camera--outline img,
@@ -306,4 +306,23 @@ nav * {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+/* PREPARING */
+
+#preparing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+#preparing img {
+  position: absolute;
+  scale: .7;
 }

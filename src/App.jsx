@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Intro from './pages/Intro';
 import Birthplace from './pages/Birthplace';
 import Upload from './pages/Upload';
+import Preparing from './pages/Preparing';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/introduction' element={ <Intro /> } />
         <Route path='/birthplace' element={ <Birthplace /> } />
         <Route path='/upload' element={ <Upload /> } />
+        <Route path='/preparing' element={ <Preparing /> } />
       </Routes>
     </Router>
   )
