@@ -17,8 +17,8 @@ const Analysis = () => {
             </div>
             <div className="analysis__info">
                 <div className="analysis__info--buttons">
-                    <div className="analysis__info--button analysis__info--button--current">
-                        <h5>East Asian</h5>
+                    <div className="analysis__info--button analysis__info--button--selected">
+                        <h5>Caucasian</h5>
                         <h5>Race</h5>
                     </div>
                     <div className="analysis__info--button">
@@ -30,7 +30,11 @@ const Analysis = () => {
                         <h5>Sex</h5>
                     </div>
                 </div>
-                <div className="analysis__info--graphic">East Asian</div>
+                <div className="analysis__info--graphic">Caucasian
+                    <div className="analysis__info--graphic--chart">
+                        100%
+                    </div>
+                </div>
                 <div className="analysis__info--breakdown">
                     <div className="analysis__info--breakdown--title">
                         <h5>Race</h5>
