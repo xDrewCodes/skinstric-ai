@@ -28,6 +28,45 @@ section {
   top: 0;
 }
 
+legend {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #777;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-subhead {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  position: absolute;
+  left: 32px;
+  top: calc( 64px + 16px );
+}
+
+input {
+  outline: none;
+  border: none;
+  text-align: center;
+  field-sizing: content;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: -5px;
+  height: 60px;
+  box-shadow: 0 3px 0 0 white, 0 4px 0 0 black;
+  /* border-bottom: 1px #1a1b1c solid; */
+}
+
+input::placeholder {
+  color: #1a1b1c;
+}
+
 
 /* NAV */
 
@@ -144,3 +183,33 @@ nav * {
   justify-content: center;
   align-items: center;
 }
+
+.intro__back {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+  cursor: pointer;
+}
+
+.intro__back img {
+  margin-right: 16px;
+}
+
+.intro__outline {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 1;
+  transform: translateY(32px);
+}
+
+.intro__outline img {
+  position: absolute
+}
+
+
+/* BIRTHPLACE */
+

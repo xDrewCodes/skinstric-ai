@@ -1,6 +1,6 @@
 
 import { useNavigate } from 'react-router-dom'
-import LandingButton from '../../assets/imports/landing-button.png'
+import LandingButton from '../../assets/imports/button.png'
 import LandingOutline from '../../assets/imports/landing-outline.png'
 import React from 'react'
 
