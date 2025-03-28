@@ -54,17 +54,32 @@ input {
   border: none;
   text-align: center;
   field-sizing: content;
+  min-width: 410px;
+  max-width: 500px;
   font-size: 60px;
   font-weight: 400;
   line-height: 60px;
   letter-spacing: -5px;
   height: 60px;
-  box-shadow: 0 3px 0 0 white, 0 4px 0 0 black;
-  /* border-bottom: 1px #1a1b1c solid; */
+  /* box-shadow: 0 3px 0 0 white, 0 4px 0 0 black; */
+  border-bottom: 1px #1a1b1c solid;
 }
 
 input::placeholder {
   color: #1a1b1c;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+  cursor: pointer;
+}
+
+.back img {
+  margin-right: 16px;
 }
 
 
@@ -163,7 +178,6 @@ nav * {
   cursor: pointer;
 }
 
-
 .landing__fine {
   position: absolute;
   bottom: 32px;
@@ -184,19 +198,6 @@ nav * {
   align-items: center;
 }
 
-.intro__back {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 32px;
-  bottom: 32px;
-  cursor: pointer;
-}
-
-.intro__back img {
-  margin-right: 16px;
-}
-
 .intro__outline {
   position: absolute;
   display: flex;
@@ -204,6 +205,7 @@ nav * {
   align-items: center;
   scale: 1;
   transform: translateY(32px);
+  z-index: -1;
 }
 
 .intro__outline img {
@@ -212,4 +214,10 @@ nav * {
 
 
 /* BIRTHPLACE */
+
+#birthplace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
