@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Nav from './components/Nav';
 import Intro from './pages/Intro';
 import Birthplace from './pages/Birthplace';
+import Upload from './pages/Upload';
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
         <Route path='/' exact element={ <Home /> } />
         <Route path='/introduction' element={ <Intro /> } />
         <Route path='/birthplace' element={ <Birthplace /> } />
+        <Route path='/upload' element={ <Upload /> } />
       </Routes>
     </Router>
-  );
+  )
 }
 
 export default App;
