@@ -39,7 +39,7 @@ const Upload = () => {
                 </div>
             </div>
 
-            <BackButton loc="/birthplace" />
+            <BackButton loc="/location" />
             <ProceedButton loc="/preparing" />
 
         </section>

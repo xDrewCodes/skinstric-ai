@@ -67,6 +67,11 @@ input {
 
 input::placeholder {
   color: #1a1b1c;
+  transition: opacity 0.15s ease;
+}
+
+input:focus::placeholder {
+  opacity: 0;
 }
 
 .back,
@@ -232,9 +237,9 @@ nav * {
 }
 
 
-/* BIRTHPLACE */
+/* LOCATION */
 
-#birthplace {
+#location {
   display: flex;
   justify-content: center;
   align-items: center;

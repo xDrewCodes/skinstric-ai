@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import Nav from './components/Nav';
 import Intro from './pages/Intro';
-import Birthplace from './pages/Birthplace';
+import Location from './pages/Location';
 import Upload from './pages/Upload';
 import Preparing from './pages/Preparing';
 import AnalysisMenu from './pages/AnalysisMenu';
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={ <Home /> } />
         <Route path='/introduction' element={ <Intro /> } />
-        <Route path='/birthplace' element={ <Birthplace /> } />
+        <Route path='/location' element={ <Location /> } />
         <Route path='/upload' element={ <Upload /> } />
         <Route path='/preparing' element={ <Preparing /> } />
         <Route path='/analysis-menu' element={ <AnalysisMenu /> } />
