@@ -22,7 +22,7 @@ const Intro = () => {
                 <legend>click to type</legend>
                 <input type="text" placeholder="Introduce Yourself" />
             </div>
-            <div className="intro__back" onClick={() => navigate('/')}>
+            <div className="back" onClick={() => navigate('/')}>
                 <img src={BackButton} alt="Go Back" />
                 Back
             </div>

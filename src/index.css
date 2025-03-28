@@ -92,6 +92,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
+  z-index: 2;
 }
 
 nav * {
@@ -221,3 +222,88 @@ nav * {
   align-items: center;
 }
 
+
+/* UPLOAD */
+
+#upload {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.upload__camera--outline,
+.upload__gallery--outline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 0.7;
+}
+
+.upload__camera--outline img,
+.upload__gallery--outline img {
+  position: absolute;
+}
+
+.camera__icon {
+  background-color: black;
+  border-radius: 100%;
+  padding: 5px;
+  box-shadow: 0 0 0 6px white, 0 0 0 7px black;
+  position: absolute;
+  cursor: pointer;
+}
+
+.gallery__icon {
+  border-radius: 100%;
+  border: 2px black solid;
+  box-shadow: 0 0 0 6px white, 0 0 0 7px black;
+  position: absolute;
+  cursor: pointer;
+}
+
+.camera__title,
+.gallery__title {
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.camera__title {
+  transform: translate(125%, -210%);
+}
+
+.gallery__title {
+  transform: translate(-115%, 240%);
+  text-align: end;
+}
+
+.camera__title:before {
+  content: '';
+  background-color: #1a1b1c;
+  height: 1px;
+  width: 65px;
+  position: absolute;
+  left: -66px;
+  bottom: -19px;
+  rotate: 135deg;
+}
+
+.gallery__title:before {
+  content: '';
+  background-color: #1a1b1c;
+  height: 1px;
+  width: 65px;
+  position: absolute;
+  right: -66px;
+  top: -19px;
+  rotate: 135deg;
+}
+
+.upload__camera,
+.upload__gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
