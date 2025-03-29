@@ -29,7 +29,6 @@ const Location = () => {
             },
             url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne'
         })
-        console.log(result)
         return result
 
     }

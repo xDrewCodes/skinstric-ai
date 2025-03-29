@@ -542,6 +542,7 @@ nav * {
   width: 650px;
   height: 100%;
   border-top: 1px #1a1b1c solid;
+  text-transform: capitalize;
 }
 
 .analysis__info--breakdown--title {
@@ -634,6 +635,11 @@ nav * {
 }
 
 .analysis__buttons--confirm:hover {
+  background-color: #a0a4ab;
+  color: black;
+}
+
+.analysis__buttons--confirm--disabled {
   background-color: #a0a4ab;
   color: black;
 }
