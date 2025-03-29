@@ -7,15 +7,16 @@ const ProceedButton = ({ loc, proceed }) => {
 
     let navigate = useNavigate()
 
-    if (proceed === true) {
-        navigate(loc)
-    }
-
     return (
-        <div className="proceed" onClick={() => navigate(loc)}>
-            Proceed
-            <img src={BackButtonImg} alt="" />
-        </div>
+        <>
+            {
+                proceed &&
+                <div className="proceed" onClick={() => navigate(loc)}>
+                    Proceed
+                    <img src={BackButtonImg} alt="" />
+                </div>
+            }
+        </>
     )
 }
 
