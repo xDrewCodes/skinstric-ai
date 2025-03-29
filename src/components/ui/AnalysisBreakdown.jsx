@@ -1,7 +1,7 @@
 
 import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const AnalysisBreakdown = ({ demo, weights, currents }) => {
 
@@ -12,8 +12,25 @@ const AnalysisBreakdown = ({ demo, weights, currents }) => {
         let newSelection = { ...selected }
         newSelection[demo] = item
         setSelected(newSelection)
+
+        localStorage.setItem('race', newSelection['race'])
+        localStorage.setItem('age', newSelection['age'])
+        localStorage.setItem('sex', newSelection['sex'])
+
     }
 
+    useEffect(() => {
+        let locRace = localStorage.getItem('race')
+        let locAge = localStorage.getItem('age')
+        let locSex = localStorage.getItem('sex')
+
+        setSelected({
+            'race': locRace,
+            'age': locAge,
+            'sex': locSex
+        })
+
+    }, [])
 
     return (
         <div className="analysis__info--breakdown">
