@@ -523,14 +523,13 @@ nav * {
   position: relative;
 }
 
-.analysis__info--graphic--chart {
+.analysis__chart {
   max-width: 380px;
+  max-height: 380px;
   width: calc(100% - 32px);
   aspect-ratio: 1/1;
-  border-radius: 100%;
-  border: 2px #1a1b1c solid;
   position: absolute;
-  bottom: 22px;
+  bottom: 16px;
   right: 16px;
   display: flex;
   align-items: center;
@@ -639,8 +638,9 @@ nav * {
   color: black;
 }
 
-.analysis__buttons--confirm--disabled {
+button.analysis__buttons--disabled {
   background-color: #a0a4ab;
+  border: 2px #a0a4ab solid !important;
   color: black;
 }
 

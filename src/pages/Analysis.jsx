@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react'
 import AnalysisChoices from '../components/ui/AnalysisChoices'
 import AnalysisBreakdown from '../components/ui/AnalysisBreakdown'
 import BackButton from '../components/ui/BackButton'
+import AnalysisChart from '../components/ui/AnalysisChart'
 
 const Analysis = ({ demos }) => {
 
     const [demo, setDemo] = useState('race')
+    const [editing, setEditing] = useState(false)
 
     let races, raceCurrent, ages, ageCurrent, genders, genderCurrent, weights, currents
 
@@ -44,6 +46,12 @@ const Analysis = ({ demos }) => {
     }
 
 
+    function saveDemos(race, age, sex) {
+
+        console.log('saved')
+
+    }
+
 
     return (
 
@@ -55,10 +63,12 @@ const Analysis = ({ demos }) => {
 
             <div className="analysis__info">
                 <AnalysisChoices setDemo={setDemo} demo={demo} currents={currents} />
-                <div className="analysis__info--graphic">{currents[demo]}
-                    <div className="analysis__info--graphic--chart">
-                        100%
-                    </div>
+                <div className="analysis__info--graphic">{
+                    currents[demo]
+                }
+
+                    <AnalysisChart demoPerc={races[0][1]} />
+
                 </div>
                 <AnalysisBreakdown demo={demo} weights={weights} currents={currents} />
             </div>
@@ -67,8 +77,19 @@ const Analysis = ({ demos }) => {
 
             <div className="analysis__ai-imperfect">If A.I. estimate is wrong, select the correct one.</div>
             <div className="analysis__buttons">
-                <button className="analysis__buttons--reset">Reset</button>
-                <button className="analysis__buttons--confirm">Confirm</button>
+                {
+                    !editing
+                        ?
+                        <>
+                            <button className="analysis__buttons--disabled analysis__buttons--reset">Reset</button>
+                            <button className="analysis__buttons--confirm analysis__buttons--disabled">Confirm</button>
+                        </>
+                        :
+                        <>
+                        <button className="analysis__buttons--reset">Reset</button>
+                            <button className="analysis__buttons--confirm">Confirm</button>
+                        </>
+                }
             </div>
         </section>
     )
