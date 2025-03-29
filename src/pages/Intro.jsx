@@ -5,8 +5,11 @@ import React, { useEffect, useState } from 'react'
 import BackButton from '../components/ui/BackButton'
 import ProceedButton from '../components/ui/ProceedButton'
 import { useNavigate } from 'react-router-dom'
+import { useOutlineAnim } from '../anim'
 
 const Intro = () => {
+
+    useOutlineAnim()
 
     let navigate = useNavigate()
 
@@ -51,9 +54,9 @@ const Intro = () => {
     return (
         <section id="intro">
             <div className="intro__outline">
-                <img src={IntroOutline1} alt="" />
-                <img src={IntroOutline2} alt="" />
-                <img src={IntroOutline3} alt="" />
+                <img className="outline1" src={IntroOutline1} alt="" />
+                <img className="outline2" src={IntroOutline2} alt="" />
+                <img className="outline3" src={IntroOutline3} alt="" />
             </div>
             <div className="section-subhead">to start analysis</div>
             <div className="intro__name">
