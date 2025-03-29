@@ -31,7 +31,6 @@ const Upload = ({ setDemos }) => {
             url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo'
         })
         setDemos(result.data.data)
-        console.log(result.data.data)
         navigate('/analysis-menu')
     }
 
