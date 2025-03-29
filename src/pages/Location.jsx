@@ -8,8 +8,11 @@ import BackButton from '../components/ui/BackButton'
 import ProceedButton from '../components/ui/ProceedButton'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useOutlineAnim } from '../anim'
 
 const Location = () => {
+
+    useOutlineAnim()
 
     const [legend, setLegend] = useState('Click to Type')
     const [proceed, setProceed] = useState(false)
@@ -64,9 +67,9 @@ const Location = () => {
     return (
         <section id="location">
             <div className="intro__outline">
-                <img src={LocationOutline1} alt="" />
-                <img src={LocationOutline2} alt="" />
-                <img src={LocationOutline3} alt="" />
+                <img className="outline1" src={LocationOutline1} alt="" />
+                <img className="outline2" src={LocationOutline2} alt="" />
+                <img className="outline3" src={LocationOutline3} alt="" />
             </div>
             <div className="section-subhead">to start analysis</div>
             <div className="location__inp">

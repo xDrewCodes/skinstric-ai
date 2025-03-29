@@ -8,8 +8,11 @@ import GalleryIcon from '../assets/imports/gallery.png'
 import React from 'react'
 import ProceedButton from '../components/ui/ProceedButton'
 import axios from 'axios'
+import { useOutlineAnim } from '../anim'
 
 const Upload = ({ setDemos }) => {
+
+    useOutlineAnim()
 
     let navigate = useNavigate()
 
@@ -39,9 +42,9 @@ const Upload = ({ setDemos }) => {
             <div className="section-subhead">to start analysis</div>
             <div className="upload__camera">
                 <div className="upload__camera--outline">
-                    <img src={UploadOutline1} alt="" />
-                    <img src={UploadOutline2} alt="" />
-                    <img src={UploadOutline3} alt="" />
+                    <img className="outline1" src={UploadOutline1} alt="" />
+                    <img className="outline2" src={UploadOutline2} alt="" />
+                    <img className="outline3" src={UploadOutline3} alt="" />
                 </div>
                 <img src={CameraIcon} alt="" className="camera__icon" />
                 <div className="camera__title">
@@ -50,9 +53,9 @@ const Upload = ({ setDemos }) => {
             </div>
             <div className="upload__gallery">
                 <div className="upload__gallery--outline">
-                    <img src={UploadOutline1} alt="" />
-                    <img src={UploadOutline2} alt="" />
-                    <img src={UploadOutline3} alt="" />
+                    <img className="outline1" src={UploadOutline1} alt="" />
+                    <img className="outline2" src={UploadOutline2} alt="" />
+                    <img className="outline3" src={UploadOutline3} alt="" />
                 </div>
                 <img
                     onClick={askFile}
