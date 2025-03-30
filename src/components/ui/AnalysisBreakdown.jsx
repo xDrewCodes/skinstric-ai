@@ -3,11 +3,13 @@ import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
 import React, { useEffect, useState } from 'react'
 
-const AnalysisBreakdown = ({ demo, weights, currents }) => {
+const AnalysisBreakdown = ({ setEditing, demo, weights, currents }) => {
 
     const [selected, setSelected] = useState(currents)
 
     function changeSelection(item) {
+
+        setEditing(true)
 
         let newSelection = { ...selected }
         newSelection[demo] = item

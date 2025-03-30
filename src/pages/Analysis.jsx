@@ -43,12 +43,16 @@ const Analysis = ({ demos }) => {
             'sex': genderCurrent
         }
 
+        localStorage.setItem('race', raceCurrent)
+        localStorage.setItem('age', ageCurrent)
+        localStorage.setItem('sex', genderCurrent)
+
     }
 
 
     function saveDemos(race, age, sex) {
 
-        console.log('saved')
+        setEditing(false)
 
     }
 
@@ -70,7 +74,7 @@ const Analysis = ({ demos }) => {
                     <AnalysisChart demoPerc={races[0][1]} />
 
                 </div>
-                <AnalysisBreakdown demo={demo} weights={weights} currents={currents} />
+                <AnalysisBreakdown setEditing={setEditing} demo={demo} weights={weights} currents={currents} />
             </div>
 
             <BackButton loc="/analysis-menu" />
@@ -86,8 +90,10 @@ const Analysis = ({ demos }) => {
                         </>
                         :
                         <>
-                        <button className="analysis__buttons--reset">Reset</button>
-                            <button className="analysis__buttons--confirm">Confirm</button>
+                            <button className="analysis__buttons--reset">Reset</button>
+                            <button
+                            onClick={saveDemos}
+                            className="analysis__buttons--confirm">Confirm</button>
                         </>
                 }
             </div>
