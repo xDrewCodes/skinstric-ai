@@ -177,6 +177,24 @@ nav * {
   rotate: 180deg;
 }
 
+.landing__test--outline2 {
+  right: -381px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-46%);
+}
+
+.landing__test--outline3 {
+  right: -461px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-46.5%);
+}
+
+.landing__test--outlines {
+  opacity: 0;
+}
+
 .landing__discover--option,
 .landing__test--option {
   font-size: 14px;
