@@ -189,6 +189,10 @@ nav * {
   margin: 0 16px;
 }
 
+.landing__discover--option {
+  min-width: 180px;
+}
+
 .landing__test--option {
   right: 0;
 }
