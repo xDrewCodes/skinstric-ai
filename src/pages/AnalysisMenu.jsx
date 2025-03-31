@@ -6,8 +6,11 @@ import AnalysisMenuOutline3 from '../assets/imports/outline3.png'
 import React from 'react'
 import BackButton from '../components/ui/BackButton'
 import ProceedButton from '../components/ui/ProceedButton'
+import { useOutlineAnim } from '../anim'
 
 const AnalysisMenu = () => {
+
+    useOutlineAnim()
 
     let navigate = useNavigate()
 
@@ -18,9 +21,9 @@ const AnalysisMenu = () => {
                 <div className="analysis-menu__subhead--subtitle">A.I Has estimated the following.<br />Fix estimaded information if needed.</div>
             </div>
             <div className="analysis-menu__panel">
-                <img src={AnalysisMenuOutline1} alt="" />
-                <img src={AnalysisMenuOutline2} alt="" />
-                <img src={AnalysisMenuOutline3} alt="" />
+                <img className="outline1" src={AnalysisMenuOutline1} alt="" />
+                <img className="outline2" src={AnalysisMenuOutline2} alt="" />
+                <img className="outline3" src={AnalysisMenuOutline3} alt="" />
                 <div className="analysis-menu__panel--buttons">
                     <div className="analysis-menu__panel--button" onClick={() => navigate('/analysis')}><h4>Demographics</h4></div>
                     <div className="analysis-menu__panel--button"><h4>Cosmetic<br />Concerns</h4></div>

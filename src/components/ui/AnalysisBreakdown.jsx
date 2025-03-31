@@ -1,33 +1,75 @@
 
 import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const AnalysisBreakdown = ({ demo, demos }) => {
+const AnalysisBreakdown = ({ demo, weights, currents }) => {
+
+    const [selected, setSelected] = useState(currents)
+
+    function changeSelection(item) {
+
+        let newSelection = { ...selected }
+        newSelection[demo] = item
+        setSelected(newSelection)
+
+        localStorage.setItem('race', newSelection['race'])
+        localStorage.setItem('age', newSelection['age'])
+        localStorage.setItem('sex', newSelection['sex'])
+
+    }
+
+    useEffect(() => {
+        let locRace = localStorage.getItem('race')
+        let locAge = localStorage.getItem('age')
+        let locSex = localStorage.getItem('sex')
+
+        setSelected({
+            'race': locRace,
+            'age': locAge,
+            'sex': locSex
+        })
+
+    }, [])
+
     return (
         <div className="analysis__info--breakdown">
-                    <div className="analysis__info--breakdown--title">
-                        <h5>{demo}</h5>
-                        <h5>A.I. Confidence</h5>
-                    </div>
+            <div className="analysis__info--breakdown--title">
+                <h5>{demo}</h5>
+                <h5>A.I. Confidence</h5>
+            </div>
 
-                    <div className="analysis__info--breakdown--item analysis__info--breakdown--item--selected">
+            { currents && weights &&
+                weights[demo].map((item, i) => (
+                    item[0] !== selected[demo]
+                    ?
+                    <div
+                    onClick={() => changeSelection(item[0])}
+                    className="analysis__info--breakdown--item"
+                    key={i}>
+                        <h5>
+                            <img src={ItemIcon} alt="" />
+                            {item[0]}
+                        </h5>
+                        <h5>
+                            {item[1]}{' '}
+                            %
+                        </h5>
+                    </div>
+                    :
+                    <div className="analysis__info--breakdown--item analysis__info--breakdown--item--selected" key={i}>
                         <h5>
                             <img src={ItemIconSelect} alt="" />
-                            White</h5>
-                        <h5>100 %</h5>
+                            {item[0]}
+                        </h5>
+                        <h5>
+                            {item[1]}{' '}
+                            %
+                        </h5>
                     </div>
-                    {
-                        new Array(5).fill(0).map((_, i) => (
-                            <div className="analysis__info--breakdown--item" key={i}>
-                                <h5>
-                                    <img src={ItemIcon} alt="" />
-                                    White</h5>
-                                <h5>100 %</h5>
-                            </div>
-                        ))
-                    }
-                </div>
+                ))
+            }
+        </div>
     )
 }
 

@@ -3,51 +3,73 @@
 import LocationOutline1 from '../assets/imports/outline.png'
 import LocationOutline2 from '../assets/imports/outline2.png'
 import LocationOutline3 from '../assets/imports/outline3.png'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BackButton from '../components/ui/BackButton'
 import ProceedButton from '../components/ui/ProceedButton'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useOutlineAnim } from '../anim'
 
 const Location = () => {
+
+    useOutlineAnim()
 
     const [legend, setLegend] = useState('Click to Type')
     const [proceed, setProceed] = useState(false)
 
+    let navigate = useNavigate()
+
     async function goNext(e) {
         if (e.key === 'Enter') {
-            setProceed(true)
+            navigate('/upload')
+
+            const localName = localStorage.getItem('name')
+            const localLocation = localStorage.getItem('location')
+
+            const result = await axios({
+                method: 'POST',
+                data: {
+                    name: localName,
+                    location: localLocation
+                },
+                url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne'
+            })
+            return result
         }
-
-        const localName = localStorage.getItem('name')
-        const localLocation = localStorage.getItem('location')
-
-        const result = await axios({
-            method: 'POST',
-            data: {
-                name: localName,
-                location: localLocation
-            },
-            url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne'
-        })
-        console.log(result)
-        return result
 
     }
 
+    function checkInp(loc) {
+        let reg = /^[A-Za-z\s]+$/
+        return reg.test(loc)
+    }
+
     function saveLocation(loc) {
-        localStorage.setItem('location', loc)
+        if (checkInp(loc)) {
+            localStorage.setItem('location', loc)
+            setProceed(true)
+        } else {
+            setProceed(false)
+        }
     }
 
     function fetchLocation() {
         return localStorage.getItem('location')
     }
 
+    useEffect(() => {
+            let loc = localStorage.getItem('location')
+            if (loc && checkInp(loc)) {
+                setProceed(true)
+            }
+        }, [])
+
     return (
         <section id="location">
             <div className="intro__outline">
-                <img src={LocationOutline1} alt="" />
-                <img src={LocationOutline2} alt="" />
-                <img src={LocationOutline3} alt="" />
+                <img className="outline1" src={LocationOutline1} alt="" />
+                <img className="outline2" src={LocationOutline2} alt="" />
+                <img className="outline3" src={LocationOutline3} alt="" />
             </div>
             <div className="section-subhead">to start analysis</div>
             <div className="location__inp">

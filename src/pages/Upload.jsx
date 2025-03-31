@@ -11,11 +11,14 @@ import VideoPointer from '../assets/imports/video-pointer.png'
 import React, { useState } from 'react'
 import ProceedButton from '../components/ui/ProceedButton'
 import axios from 'axios'
+import { useOutlineAnim } from '../anim'
+import UploadGallery from '../components/ui/UploadGallery'
 
 const Upload = ({ setDemos }) => {
 
     const [isRecording, setIsRecording] = useState(false)
     const [isSelecting, setIsSelecting] = useState(false)
+    useOutlineAnim()
 
     let navigate = useNavigate()
 
@@ -102,7 +105,6 @@ const Upload = ({ setDemos }) => {
             url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo'
         })
         setDemos(result.data.data)
-        console.log(result.data.data)
         navigate('/analysis-menu')
     }
 
@@ -147,7 +149,6 @@ const Upload = ({ setDemos }) => {
                                     const reader = new FileReader()
                                     reader.onloadend = function () {
                                         savePicture(reader.result)
-
                                     };
                                     reader.readAsDataURL(file)
                                 }

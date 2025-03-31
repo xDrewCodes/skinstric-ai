@@ -26,6 +26,7 @@ section {
   height: 100vh;
   position: absolute;
   top: 0;
+  overflow: hidden;
 }
 
 legend {
@@ -176,6 +177,24 @@ nav * {
   rotate: 180deg;
 }
 
+.landing__test--outline2 {
+  right: -381px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-46%);
+}
+
+.landing__test--outline3 {
+  right: -461px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-46.5%);
+}
+
+.landing__test--outlines {
+  opacity: 0;
+}
+
 .landing__discover--option,
 .landing__test--option {
   font-size: 14px;
@@ -186,6 +205,10 @@ nav * {
   display: flex;
   align-items: center;
   margin: 0 16px;
+}
+
+.landing__discover--option {
+  min-width: 180px;
 }
 
 .landing__test--option {
@@ -644,14 +667,13 @@ nav * {
   position: relative;
 }
 
-.analysis__info--graphic--chart {
+.analysis__chart {
   max-width: 380px;
+  max-height: 380px;
   width: calc(100% - 32px);
   aspect-ratio: 1/1;
-  border-radius: 100%;
-  border: 2px #1a1b1c solid;
   position: absolute;
-  bottom: 22px;
+  bottom: 16px;
   right: 16px;
   display: flex;
   align-items: center;
@@ -663,6 +685,7 @@ nav * {
   width: 650px;
   height: 100%;
   border-top: 1px #1a1b1c solid;
+  text-transform: capitalize;
 }
 
 .analysis__info--breakdown--title {
@@ -756,6 +779,12 @@ nav * {
 
 .analysis__buttons--confirm:hover {
   background-color: #a0a4ab;
+  color: black;
+}
+
+button.analysis__buttons--disabled {
+  background-color: #a0a4ab;
+  border: 2px #a0a4ab solid !important;
   color: black;
 }
 
