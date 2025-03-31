@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import BackButton from '../components/ui/BackButton'
 import ProceedButton from '../components/ui/ProceedButton'
 import { useNavigate } from 'react-router-dom'
-import { useOutlineAnim, useTextSlide } from '../anim'
+import { useOutlineAnim } from '../anim'
 
 const Intro = () => {
     
