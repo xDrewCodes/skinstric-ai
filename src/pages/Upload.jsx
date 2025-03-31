@@ -15,6 +15,8 @@ import axios from 'axios'
 const Upload = ({ setDemos }) => {
 
     const [isRecording, setIsRecording] = useState(false)
+    const [isSelecting, setIsSelecting] = useState(false)
+
     let navigate = useNavigate()
 
     async function getCameraAccess() {
@@ -55,14 +57,34 @@ const Upload = ({ setDemos }) => {
             canvas.width = videoElement.videoWidth
             canvas.height = videoElement.videoHeight
 
-            // Draw the current frame of the video onto the canvas
             context.drawImage(videoElement, 0, 0, canvas.width, canvas.height)
 
-            // Get the image as a base64 string
             const imageData = canvas.toDataURL('image/png')
-            savePicture(imageData)
+
+            videoElement.style.display = 'none'
+            canvas.style.display = 'block'
+            setIsSelecting(true)
         } else {
             console.error("Video or canvas element not found.")
+        }
+    }
+
+    function retake() {
+        const videoElement = document.querySelector('#camera__video')
+        const canvas = document.querySelector('#capture__canvas')
+
+        videoElement.style.display = 'block'
+        canvas.style.display = 'none'
+        setIsSelecting(false)
+    }
+
+        function keep() {
+        const canvas = document.querySelector('#capture__canvas')
+        if (canvas) {
+            const base64String = canvas.toDataURL('image/png')
+            savePicture(base64String)
+        } else {
+            console.error("Canvas element not found.")
         }
     }
 
@@ -144,38 +166,52 @@ const Upload = ({ setDemos }) => {
                 </>
                 :
                 <div className="upload__video">
-                    <div className='upload__video--nav'>
-                        <div className="upload__video--title nav__logo">Skinstric</div>
-                        <div className="upload__video--crumb">[ Upload ]</div>
-                    </div>
-                    <div className="upload__video--notif">Great Shot!</div>
-                    <div className="upload__video--button" onClick={captureFrame}>
-                        Take Picture
-                        <div className="upload__video--button--img">
-                            <img src={VideoCamera} alt="" />
+                    {!isSelecting
+                        ?
+                        <>
+                            <div className='upload__video--nav'>
+                                <div className="upload__video--title nav__logo">Skinstric</div>
+                                <div className="upload__video--crumb">[ Upload ]</div>
+                            </div>
+                            <div className="upload__video--notif">Great Shot!</div>
+                            <div className="upload__video--button" onClick={captureFrame}>
+                                Take Picture
+                                <div className="upload__video--button--img">
+                                    <img src={VideoCamera} alt="" />
+                                </div>
+                            </div>
+                            <div className="upload__video--info">
+                                <h4>To get a better result make sure to have</h4>
+                                <div className="upload__video--pointers">
+                                    <div className="upload__video--pointer">
+                                        <img src={VideoPointer} alt="" />
+                                        neutral expression
+                                    </div>
+                                    <div className="upload__video--pointer">
+                                        <img src={VideoPointer} alt="" />
+                                        frontal pose
+                                    </div>
+                                    <div className="upload__video--pointer">
+                                        <img src={VideoPointer} alt="" />
+                                        adequate lighting
+                                    </div>
+                                </div>
+                            </div>
+                            <img
+                                onClick={() => setIsRecording(false)}
+                                className="upload__video--back"
+                                src={GoBackButton} alt="" />
+                        </>
+                        :
+                        <div className="upload__snapshot--buttons">
+                            <div
+                                onClick={keep}
+                                className="upload__snapshot--confirm">Keep</div>
+                            <div
+                                onClick={retake}
+                                className="upload__snapshot--retake">Retake</div>
                         </div>
-                    </div>
-                    <div className="upload__video--info">
-                        <h4>To get a better result make sure to have</h4>
-                        <div className="upload__video--pointers">
-                            <div className="upload__video--pointer">
-                                <img src={VideoPointer} alt="" />
-                                neutral expression
-                            </div>
-                            <div className="upload__video--pointer">
-                                <img src={VideoPointer} alt="" />
-                                frontal pose
-                            </div>
-                            <div className="upload__video--pointer">
-                                <img src={VideoPointer} alt="" />
-                                adequate lighting
-                            </div>
-                        </div>
-                    </div>
-                    <img
-                    onClick={() => setIsRecording(false)}
-                    className="upload__video--back"
-                    src={GoBackButton} alt="" />
+                    }
                     <video id="camera__video" autoPlay muted></video>
                     <canvas id="capture__canvas" style={{ display: 'none' }}></canvas>
                 </div>

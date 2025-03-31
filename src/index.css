@@ -435,6 +435,23 @@ nav * {
   cursor: pointer;
 }
 
+/* SNAPSHOT */
+
+.upload__snapshot--buttons {
+  display: flex;
+  position: absolute;
+  bottom: 32px;
+}
+
+.upload__snapshot--confirm,
+.upload__snapshot--retake {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 16px;
+  cursor: pointer;
+}
+
 
 /* PREPARING */
 
