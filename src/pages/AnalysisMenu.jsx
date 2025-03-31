@@ -5,7 +5,6 @@ import AnalysisMenuOutline2 from '../assets/imports/outline2.png'
 import AnalysisMenuOutline3 from '../assets/imports/outline3.png'
 import React from 'react'
 import BackButton from '../components/ui/BackButton'
-import ProceedButton from '../components/ui/ProceedButton'
 import { useOutlineAnim } from '../anim'
 
 const AnalysisMenu = () => {
