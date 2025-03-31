@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import AnalysisChoices from '../components/ui/AnalysisChoices'
 import AnalysisBreakdown from '../components/ui/AnalysisBreakdown'
@@ -6,59 +5,59 @@ import BackButton from '../components/ui/BackButton'
 import AnalysisChart from '../components/ui/AnalysisChart'
 
 const Analysis = ({ demos }) => {
-
     const [demo, setDemo] = useState('race')
     const [editing, setEditing] = useState(false)
+    const [currents, setCurrents] = useState(null)
+    const [demoPerc, setDemoPerc] = useState(0) // State to store the current demo percentage
 
-    let races, raceCurrent, ages, ageCurrent, genders, genderCurrent, weights, currents
+    useEffect(() => {
+        if (demos) {
+            const races = Object.entries(demos.race)
+                .map(item => [item[0], (item[1] * 100).toFixed(2)]) // Multiply by 100 and round to two decimal places
+                .sort((a, b) => b[1] - a[1])
 
-    if (demos) {
+            const ages = Object.entries(demos.age)
+                .map(item => [item[0], (item[1] * 100).toFixed(2)])
+                .sort((a, b) => b[1] - a[1])
 
-        races = Object.entries(demos.race)
-        ages = Object.entries(demos.age)
-        genders = Object.entries(demos.gender)
+            const genders = Object.entries(demos.gender)
+                .map(item => [item[0], (item[1] * 100).toFixed(2)])
+                .sort((a, b) => b[1] - a[1])
 
-        races = races.map(item => [item[0], (item[1] * 100).toFixed(2)])
-        races = races.sort((a, b) => b[1] - a[1])
+            const raceCurrent = races[0][0]
+            const ageCurrent = ages[0][0]
+            const genderCurrent = genders[0][0]
 
-        ages = ages.map(item => [item[0], (item[1] * 100).toFixed(2)])
-        ages = ages.sort((a, b) => b[1] - a[1])
+            setCurrents({ race: raceCurrent, age: ageCurrent, sex: genderCurrent })
 
-        genders = genders.map(item => [item[0], (item[1] * 100).toFixed(2)])
-        genders = genders.sort((a, b) => b[1] - a[1])
-
-        weights = {
-            'race': races,
-            'age': ages,
-            'sex': genders
+            // Set initial demoPerc value for the race demographic (or default to the first selected demo)
+            setDemoPerc(demos[demo][raceCurrent] * 100)
         }
+    }, [demos])
 
-        raceCurrent = races[0][0]
-        ageCurrent = ages[0][0]
-        genderCurrent = genders[0][0]
-
-        currents = {
-            'race': raceCurrent,
-            'age': ageCurrent,
-            'sex': genderCurrent
-        }
-
-        localStorage.setItem('race', raceCurrent)
-        localStorage.setItem('age', ageCurrent)
-        localStorage.setItem('sex', genderCurrent)
-
+    function updateCurrent(key, value) {
+        setCurrents(prev => ({ ...prev, [key]: value }))
+        setDemoPerc(demos[demo][value] * 100) // Update the percentage when the demographic changes
     }
 
-
-    function saveDemos(race, age, sex) {
-
+    function saveDemos() {
+        localStorage.setItem('race', currents?.race) // Add optional chaining
+        localStorage.setItem('age', currents?.age) // Add optional chaining
+        localStorage.setItem('sex', currents?.sex) // Add optional chaining
         setEditing(false)
-
     }
 
+    if (!demos || !currents) { // Make sure currents is not null
+        return (
+            <section id="analysis">
+                <div className="analysis__no-data">
+                    You need to submit an image to be scanned to view your demographics.
+                </div>
+            </section>
+        )
+    }
 
     return (
-
         <section id="analysis">
             <div className="section-subhead">A.I. Analysis
                 <div className="analysis__title">Demographics</div>
@@ -66,36 +65,29 @@ const Analysis = ({ demos }) => {
             </div>
 
             <div className="analysis__info">
-                <AnalysisChoices setDemo={setDemo} demo={demo} currents={currents} />
-                <div className="analysis__info--graphic">{
-                    currents[demo]
-                }
-
-                    <AnalysisChart demoPerc={races[0][1]} />
-
+                <AnalysisChoices setDemo={setDemo} demo={demo} currents={currents} updateCurrent={updateCurrent} />
+                <div className="analysis__info--graphic">
+                    {currents[demo]} {/* Only display after currents is set */}
+                    <AnalysisChart demoPerc={demoPerc} /> {/* Pass demoPerc to AnalysisChart */}
                 </div>
-                <AnalysisBreakdown setEditing={setEditing} demo={demo} weights={weights} currents={currents} />
+                <AnalysisBreakdown setEditing={setEditing} demo={demo} weights={demos} currents={currents} updateCurrent={updateCurrent} />
             </div>
 
             <BackButton loc="/analysis-menu" />
 
             <div className="analysis__ai-imperfect">If A.I. estimate is wrong, select the correct one.</div>
             <div className="analysis__buttons">
-                {
-                    !editing
-                        ?
-                        <>
-                            <button className="analysis__buttons--disabled analysis__buttons--reset">Reset</button>
-                            <button className="analysis__buttons--confirm analysis__buttons--disabled">Confirm</button>
-                        </>
-                        :
-                        <>
-                            <button className="analysis__buttons--reset">Reset</button>
-                            <button
-                            onClick={saveDemos}
-                            className="analysis__buttons--confirm">Confirm</button>
-                        </>
-                }
+                {!editing ? (
+                    <>
+                        <button className="analysis__buttons--disabled analysis__buttons--reset">Reset</button>
+                        <button className="analysis__buttons--confirm analysis__buttons--disabled">Confirm</button>
+                    </>
+                ) : (
+                    <>
+                        <button className="analysis__buttons--reset">Reset</button>
+                        <button onClick={saveDemos} className="analysis__buttons--confirm">Confirm</button>
+                    </>
+                )}
             </div>
         </section>
     )
