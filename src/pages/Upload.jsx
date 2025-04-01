@@ -169,7 +169,7 @@ const Upload = ({ setDemos }) => {
                         </div>
                     </div>
 
-                    <BackButton loc="/location" />
+                    <BackButton loc="/introduction" />
                 </>
                 :
                 <div className="upload__video">

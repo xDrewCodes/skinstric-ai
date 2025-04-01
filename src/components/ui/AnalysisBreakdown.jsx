@@ -2,45 +2,37 @@ import React, { useEffect, useState } from 'react'
 import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
 
-const AnalysisBreakdown = ({ setEditing, demo, weights, currents }) => {
-    // Initialize selected state based on currents
+const AnalysisBreakdown = ({ editing, setEditing, demo, setDemoPerc, weights, currents, setCurrents }) => {
     const [selected, setSelected] = useState({
         race: currents?.race,
         age: currents?.age,
         sex: currents?.sex,
     })
 
-    useEffect(() => {
-        // Update selected state if currents change
-        if (currents) {
-            setSelected({
-                race: currents.race,
-                age: currents.age,
-                sex: currents.sex,
-            })
-        }
-    }, [currents])  // Re-run when currents change
-
-    function changeSelection(item) {
+    function changeSelection(item, val) {
         setEditing(true)
-        
-        // Update selected state with the new value
+
         setSelected(prevSelected => {
             const updatedSelected = { ...prevSelected }
-            updatedSelected[demo] = item // Update based on the selected demo
+            updatedSelected[demo] = item
             return updatedSelected
         })
 
-        // Store the new selection in localStorage
-        localStorage.setItem('race', selected.race)
-        localStorage.setItem('age', selected.age)
-        localStorage.setItem('sex', selected.sex)
+        setCurrents(prevSelected => {
+            const updatedSelected = { ...prevSelected }
+            updatedSelected[demo] = item
+            return updatedSelected
+        })
+
+        setDemoPerc(val)
     }
 
-    // Render the breakdown list, ensuring values are sorted by highest percentage
-    const sortedItems = weights[demo]
-        ? Object.entries(weights[demo])
-            .map(([key, value]) => ({ key, value: (value * 100).toFixed(2) })) // Convert to percentage
+    let curDemo = demo
+    if (curDemo === 'sex') { curDemo = 'gender' }
+
+    const sortedItems = weights[curDemo]
+        ? Object.entries(weights[curDemo])
+            .map(([key, value]) => ({ key, value: (value * 100).toFixed(2) }))
             .sort((a, b) => b.value - a.value)
         : []
 
@@ -56,7 +48,7 @@ const AnalysisBreakdown = ({ setEditing, demo, weights, currents }) => {
                     item.key !== selected[demo] ? (
                         <div
                             key={i}
-                            onClick={() => changeSelection(item.key)}
+                            onClick={() => changeSelection(item.key, item.value)}
                             className="analysis__info--breakdown--item"
                         >
                             <h5>

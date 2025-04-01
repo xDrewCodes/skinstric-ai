@@ -16,7 +16,7 @@ const AnalysisChart = ({ demoPerc }) => {
     useEffect(() => {
         const ctx = canvasRef.current.getContext('2d')
 
-        const data = {
+        let data = {
             datasets: [
                 {
                     data: [demoPerc, 100 - demoPerc],
@@ -55,7 +55,7 @@ const AnalysisChart = ({ demoPerc }) => {
                 chartInstanceRef.current.destroy()
             }
         }
-    }, [])
+    }, [demoPerc])
 
     return (
         <div className="analysis__chart">
