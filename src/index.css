@@ -446,14 +446,16 @@ nav * {
 }
 
 .upload__video--notif {
-  top: 120px;
-  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
   z-index: 1;
   color: white;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 400;
-  opacity: 0;
+  opacity: 1;
 }
 
 .upload__video--button {
@@ -494,6 +496,10 @@ nav * {
   margin: 16px;
 }
 
+.upload__video--pointer img {
+  margin-right: 8px;
+}
+
 .upload__video--info h4,
 .upload__video--pointers div {
   color: white;
@@ -504,12 +510,16 @@ nav * {
 }
 
 .upload__video--back {
-  filter: invert(1);
   position: absolute;
-  bottom: 32px;
-  left: 32px;
+  bottom: 16px;
+  left: 20px;
   z-index: 1;
   cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+
+.upload__video--back:hover {
+  scale: 1.2;
 }
 
 /* SNAPSHOT */

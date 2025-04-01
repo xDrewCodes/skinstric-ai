@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import BackButton from '../components/ui/BackButton'
-import GoBackButton from '../assets/imports/button.png'
+import GoBackButton from '../assets/imports/upload-button.png'
 import UploadOutline1 from '../assets/imports/outline.png'
 import UploadOutline2 from '../assets/imports/outline2.png'
 import UploadOutline3 from '../assets/imports/outline3.png'
@@ -82,7 +82,7 @@ const Upload = ({ setDemos }) => {
         setIsSelecting(false)
     }
 
-        function keep() {
+    function keep() {
         const canvas = document.querySelector('#capture__canvas')
         if (canvas) {
             const base64String = canvas.toDataURL('image/png')
@@ -111,7 +111,7 @@ const Upload = ({ setDemos }) => {
 
     useGSAP(() => {
         inTl = gsap.timeline()
-        .from('#upload', { opacity: 0, duration: 1 })
+            .from('#upload', { opacity: 0, duration: 1 })
     })
 
     return (
@@ -180,7 +180,6 @@ const Upload = ({ setDemos }) => {
                                 <div className="upload__video--title nav__logo">Skinstric</div>
                                 <div className="upload__video--crumb">[ Upload ]</div>
                             </div>
-                            <div className="upload__video--notif">Great Shot!</div>
                             <div className="upload__video--button" onClick={captureFrame}>
                                 Take Picture
                                 <div className="upload__video--button--img">
@@ -207,10 +206,12 @@ const Upload = ({ setDemos }) => {
                             <img
                                 onClick={() => setIsRecording(false)}
                                 className="upload__video--back"
-                                src={GoBackButton} alt="" />
+                                src={GoBackButton}
+                                alt="" />
                         </>
                         :
                         <div className="upload__snapshot--buttons">
+                            <div className="upload__video--notif">Great Shot!</div>
                             <div
                                 onClick={keep}
                                 className="upload__snapshot--confirm">Keep</div>
