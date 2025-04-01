@@ -37,24 +37,45 @@ const Landing = () => {
     }
 
     useGSAP(() => {
-        tl = gsap.timeline()
-        tl.current = gsap.timeline({ paused: true })
-            .to('.landing__soph', { x: (window.innerWidth / -2) + 370, duration: 0.5, ease: 'power1.inOut' })
-            .to('.landing__skin', { x: (window.innerWidth / -2) + 230, duration: 0.5, ease: 'power1.inOut' }, '<')
-            .to('.landing__discover', { x: -300, duration: 0.5, ease: 'power1.inOut' }, '<')
-            .to('.landing__test--outline2', { x: -40, opacity: 1, duration: 0.5 }, '<')
-            .to('.landing__test--outline3', { x: -80, opacity: 1, duration: 0.5 }, '<')
+        if (window.matchMedia('(max-width: 500px').matches) {
+            tl = gsap.timeline()
+            tl.current = gsap.timeline({ paused: true })
+        } else if (window.matchMedia('(max-width: 800px').matches) {
+            tl = gsap.timeline()
+            tl.current = gsap.timeline({ paused: true })
+                .to('.landing__soph', { x: (window.innerWidth / -2) + 210, duration: 0.5, ease: 'power1.inOut' })
+                .to('.landing__skin', { x: (window.innerWidth / -2) + 135, duration: 0.5, ease: 'power1.inOut' }, '<')
+                .to('.landing__discover', { x: -300, duration: 0.5, ease: 'power1.inOut' }, '<')
+                .to('.landing__test--outline2', { x: -40, opacity: 1, duration: 0.5 }, '<')
+                .to('.landing__test--outline3', { x: -80, opacity: 1, duration: 0.5 }, '<')
+        } else if (window.matchMedia('(max-width: 1150px').matches) {
+            tl = gsap.timeline()
+            tl.current = gsap.timeline({ paused: true })
+                .to('.landing__soph', { x: (window.innerWidth / -2) + 240, duration: 0.5, ease: 'power1.inOut' })
+                .to('.landing__skin', { x: (window.innerWidth / -2) + 150, duration: 0.5, ease: 'power1.inOut' }, '<')
+                .to('.landing__discover', { x: -300, duration: 0.5, ease: 'power1.inOut' }, '<')
+                .to('.landing__test--outline2', { x: -40, opacity: 1, duration: 0.5 }, '<')
+                .to('.landing__test--outline3', { x: -80, opacity: 1, duration: 0.5 }, '<')
+        } else if (window.matchMedia('(max-width: 10000px').matches) {
+            tl = gsap.timeline()
+            tl.current = gsap.timeline({ paused: true })
+                .to('.landing__soph', { x: (window.innerWidth / -2) + 370, duration: 0.5, ease: 'power1.inOut' })
+                .to('.landing__skin', { x: (window.innerWidth / -2) + 230, duration: 0.5, ease: 'power1.inOut' }, '<')
+                .to('.landing__discover', { x: -300, duration: 0.5, ease: 'power1.inOut' }, '<')
+                .to('.landing__test--outline2', { x: -40, opacity: 1, duration: 0.5 }, '<')
+                .to('.landing__test--outline3', { x: -80, opacity: 1, duration: 0.5 }, '<')
+        }
     })
 
     useGSAP(() => {
         gsap.timeline()
-        .from('.landing__soph', { y: 70, opacity: 0, duration: 0.5 })
-        .from('.landing__skin', { y: 70, opacity: 0, duration: 0.5 }, '<+0.2')
-        .from('.landing__discover--option', { opacity: 0, duration: 1 })
-        .from('.landing__discover--outline', { opacity: 0, duration: 1 }, '<')
-        .from('.landing__test--option', { opacity: 0, duration: 1 }, '<')
-        .from('.landing__test--outline', { opacity: 0, duration: 1 }, '<')
-        .from('.landing__fine', { opacity: 0 })
+            .from('.landing__soph', { y: 70, opacity: 0, duration: 0.5 })
+            .from('.landing__skin', { y: 70, opacity: 0, duration: 0.5 }, '<+0.2')
+            .from('.landing__discover--option', { opacity: 0, duration: 1 })
+            .from('.landing__discover--outline', { opacity: 0, duration: 1 }, '<')
+            .from('.landing__test--option', { opacity: 0, duration: 1 }, '<')
+            .from('.landing__test--outline', { opacity: 0, duration: 1 }, '<')
+            .from('.landing__fine', { opacity: 0 })
     })
 
     return (

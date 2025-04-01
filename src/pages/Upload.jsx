@@ -124,9 +124,9 @@ const Upload = ({ setDemos }) => {
                     <div className="section-subhead">to start analysis</div>
                     <div className="upload__camera">
                         <div className="upload__camera--outline">
-                            <img src={UploadOutline1} alt="" />
-                            <img src={UploadOutline2} alt="" />
-                            <img src={UploadOutline3} alt="" />
+                            <img className="upload__outline" src={UploadOutline1} alt="" />
+                            <img className="upload__outline" src={UploadOutline2} alt="" />
+                            <img className="upload__outline" src={UploadOutline3} alt="" />
                         </div>
                         <img
                             onClick={getCameraAccess}
@@ -140,9 +140,9 @@ const Upload = ({ setDemos }) => {
                     </div>
                     <div className="upload__gallery">
                         <div className="upload__gallery--outline">
-                            <img src={UploadOutline1} alt="" />
-                            <img src={UploadOutline2} alt="" />
-                            <img src={UploadOutline3} alt="" />
+                            <img className="upload__outline" src={UploadOutline1} alt="" />
+                            <img className="upload__outline" src={UploadOutline2} alt="" />
+                            <img className="upload__outline" src={UploadOutline3} alt="" />
                         </div>
                         <img
                             onClick={askFile}
