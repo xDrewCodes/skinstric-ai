@@ -45,7 +45,7 @@ const AnalysisBreakdown = ({ editing, setEditing, demo, setDemoPerc, weights, cu
 
             {sortedItems &&
                 sortedItems.map((item, i) => (
-                    item.key !== selected[demo] ? (
+                    item.key !== currents[demo] ? (
                         <div
                             key={i}
                             onClick={() => changeSelection(item.key, item.value)}

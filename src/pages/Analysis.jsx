@@ -71,10 +71,11 @@ const Analysis = ({ demos }) => {
             'age': localStorage.getItem('age'),
             'sex': localStorage.getItem('sex')
         })
+        setDemoPerc(demos[demo][localStorage.getItem(demo)] * 100)
         setEditing(false)
     }
 
-    if (!demos || !currents) { // Make sure currents is not null
+    if (!demos || !currents) {
         return (
             <section id="analysis">
                 <div className="analysis__no-data">

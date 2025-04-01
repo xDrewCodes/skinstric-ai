@@ -19,7 +19,6 @@ const AnalysisChoices = ({ setDemo, demo, demos, currents, demoPerc, setDemoPerc
                     <div
                         onClick={() => {
                             setDemo('age')
-                            console.log(demos)
                             setDemoPerc(demos.age[localStorage.getItem('age')] * 100)
                         }}
                         className={`analysis__info--button ${demo === 'age' && 'analysis__info--button--selected'}`}>

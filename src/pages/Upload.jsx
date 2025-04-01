@@ -106,6 +106,11 @@ const Upload = ({ setDemos }) => {
             url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo'
         })
         setDemos(result.data.data)
+
+        localStorage.removeItem('race')
+        localStorage.removeItem('age')
+        localStorage.removeItem('sex')
+        
         navigate('/analysis-menu')
     }
 
