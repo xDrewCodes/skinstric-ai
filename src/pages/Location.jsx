@@ -10,7 +10,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useOutlineAnim } from '../anim'
 
-const Location = () => {
+const Location = ({ setIsIntro }) => {
 
     useOutlineAnim()
 
@@ -78,7 +78,11 @@ const Location = () => {
                     placeholder={fetchLocation() || "Where are you from?"} />
             </div>
 
-            <BackButton loc="/introduction" />
+            <div
+            onClick={setIsIntro}
+            >
+                <BackButton loc="/introduction" />
+            </div>
             <ProceedButton loc="/upload" proceed={proceed} />
 
         </section>

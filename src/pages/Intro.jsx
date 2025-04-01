@@ -91,7 +91,7 @@ const Intro = () => {
                         </div>
                     </section>
                     :
-                    <Location />
+                    <Location setIsIntro={setIsIntro} />
             }
         </section>
     )
