@@ -27,6 +27,7 @@ section {
   position: absolute;
   top: 0;
   overflow: hidden;
+  z-index: -1;
 }
 
 legend {
@@ -89,22 +90,46 @@ input:focus::placeholder {
 }
 
 .back {
-  left: 32px;
+  left: 0;
 }
 
-.back img {
-  margin-right: 16px;
+.back__imgs {
+  margin-left: 48px;
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back__imgs img {
+  position: absolute;
 }
 
 .proceed {
-  right: 32px;
+  right: 0;
 }
 
-.proceed img {
-  margin-left: 16px;
-  rotate: 180deg;
+.gsap-back-hover {
+  opacity: 0;
+  scale: 0.6;
 }
 
+.proceed__imgs {
+  margin-left: 40px;
+  margin-right: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proceed__imgs img {
+  position: absolute;
+}
+
+.gsap-proceed-hover {
+  opacity: 0;
+  scale: 0.6;
+}
 
 
 /* NAV */
@@ -116,7 +141,6 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  z-index: 2;
 }
 
 nav * {
@@ -138,12 +162,20 @@ nav * {
 }
 
 .nav__btn {
-  background-color: #000;
+  background-color: #1a1b1c;
   color: #fff;
   border: none;
   font-size: 10px;
   height: 32px;
   width: 92px;
+  border: 2px #1a1b1c solid;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nav__btn:hover {
+  background-color: #fff;
+  color: #1a1b1c;
 }
 
 
@@ -177,6 +209,24 @@ nav * {
   rotate: 180deg;
 }
 
+.landing__test--outline2 {
+  right: -381px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-46%);
+}
+
+.landing__test--outline3 {
+  right: -461px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-46.5%);
+}
+
+.landing__test--outlines {
+  opacity: 0;
+}
+
 .landing__discover--option,
 .landing__test--option {
   font-size: 14px;
@@ -190,15 +240,37 @@ nav * {
 }
 
 .landing__discover--option {
-  min-width: 180px;
+  min-width: 220px;
+  transform: translateY(16px);
 }
 
 .landing__test--option {
+  transform: translateY(16px);
   right: 0;
 }
 
-.landing__test--option img {
-  rotate: 180deg;
+.landing__test--imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 56px;
+  margin-left: 56px;
+}
+
+.landing__test--imgs img {
+  position: absolute;
+}
+
+.landing__discover--imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 56px;
+  margin-left: 56px;
+}
+
+.landing__discover--imgs img {
+  position: absolute;
 }
 
 .landing__discover--option img,
@@ -337,9 +409,167 @@ nav * {
 }
 
 
+/* VIDEO*/
+
+#camera__video {
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+}
+
+.upload__video {
+  display: flex;
+  justify-content: center;
+}
+
+.upload__video--nav {
+  display: flex;
+  position: absolute;
+  top: 23px;
+  left: 32px;
+  z-index: 1;
+}
+
+.upload__video--title,
+.upload__video--crumb {
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.upload__video--crumb {
+  margin-left: 16px;
+}
+
+.upload__video--notif {
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  z-index: 1;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.upload__video--button {
+  color: white;
+  position: absolute;
+  right: 32px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.upload__video--button--img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 100%;
+  height: 55px;
+  width: 55px;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.upload__video--info {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.upload__video--pointers {
+  display: flex;
+}
+
+.upload__video--pointer {
+  margin: 16px;
+}
+
+.upload__video--pointer img {
+  margin-right: 8px;
+}
+
+.upload__video--info h4,
+.upload__video--pointers div {
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.upload__video--back {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  z-index: 1;
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+
+.upload__video--back:hover {
+  scale: 1.2;
+}
+
+/* SNAPSHOT */
+
+.upload__snapshot--buttons {
+  display: flex;
+  position: absolute;
+  bottom: 32px;
+}
+
+.upload__snapshot--confirm,
+.upload__snapshot--retake {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  cursor: pointer;
+}
+
+.upload__snapshot--confirm {
+  margin-left: 12px;
+  color: #fff;
+  background-color: #1a1b1c;
+  transition: all 0.2s ease;
+}
+
+.upload__snapshot--confirm:hover {
+  background-color: #a0a4ab;
+  color: black;
+}
+
+.upload__snapshot--retake {
+  border: 2px #1a1b1c solid !important;
+  transition: all 0.2s ease;
+}
+
+.upload__snapshot--retake:hover {
+  background-color: #a0a4ab;
+  border-color: #a0a4ab !important;
+}
+
+
 /* PREPARING */
 
 #preparing {
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;

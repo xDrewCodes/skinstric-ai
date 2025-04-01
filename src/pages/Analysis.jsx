@@ -3,6 +3,8 @@ import AnalysisChoices from '../components/ui/AnalysisChoices'
 import AnalysisBreakdown from '../components/ui/AnalysisBreakdown'
 import BackButton from '../components/ui/BackButton'
 import AnalysisChart from '../components/ui/AnalysisChart'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const Analysis = ({ demos }) => {
     const [demo, setDemo] = useState('race')
@@ -56,6 +58,13 @@ const Analysis = ({ demos }) => {
             </section>
         )
     }
+
+    let inTl
+
+    useGSAP(() => {
+        inTl = gsap.timeline()
+        .from('#analysis', { opacity: 0, duartion: 1.1 })
+    })
 
     return (
         <section id="analysis">

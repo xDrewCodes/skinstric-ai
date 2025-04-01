@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 const Nav = () => {
 
     const pg = useLocation()
+    const path = pg.pathname
 
     return (
         <nav>
@@ -13,10 +14,15 @@ const Nav = () => {
                 <div className="nav__title">
                     <h4 className="nav__logo">Skinstric</h4>
                     {
-                        pg.pathname === '/analysis' || pg.pathname === '/analysis-menu'
-                        ?
+                        ( path === '/analysis' || path === '/analysis-menu' ) &&
                         <h4 className="nav__crumb">[ Analysis ]</h4>
-                        :
+                    }
+                    {
+                        path === '/upload' &&
+                        <h4 className="nav__crumb">[ Upload ]</h4>
+                    }
+                    {
+                        ( path === '/introduction' || path === '/location' ) &&
                         <h4 className="nav__crumb">[ Intro ]</h4>
                     }
                 </div>
