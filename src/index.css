@@ -1069,6 +1069,7 @@ button.analysis__buttons--disabled {
     text-align: center;
     left: 50%;
     transform: translate(-50%);
+    max-width: 90%;
   }
 
   #upload {
@@ -1162,13 +1163,31 @@ button.analysis__buttons--disabled {
 
 @media (max-width: 500px) {
 
+  .section-subhead {
+    top: 48px;
+  }
+
+  .back,
+  .proceed {
+    color: #ffffff00;
+  }
+
   #home {
     left: 0;
+  }
+
+  .landing__title {
+    transform: translateY(-25vh);
   }
 
   .landing__title h1 {
     font-size: 48px;
     line-height: 46px;
+  }
+
+  .landing__fine {
+    line-height: 16px;
+    bottom: 16px;
   }
 
   .landing__discover--option,
@@ -1203,12 +1222,23 @@ button.analysis__buttons--disabled {
     margin-bottom: 32px;
   }
 
+  .intro__name,
+  .location__inp {
+    scale: 0.6;
+  }
+
   #upload {
     justify-content: space-evenly;
+    flex-direction: row;
   }
 
   .upload__outline {
     display: none;
+  }
+
+  .camera__icon,
+  .gallery__icon {
+    scale: 0.7;
   }
 
   .camera__title,
@@ -1218,21 +1248,18 @@ button.analysis__buttons--disabled {
     text-align: center;
     font-size: 14px;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 18px;
   }
 
   .camera__title {
-    transform: translate(0, -210%);
+    transform: translate(0, -180%);
   }
 
   .gallery__title {
-    transform: translate(0, 210%);
+    transform: translate(0, 180%);
   }
 
-  .camera__title:before {
-    content: none;
-  }
-
+  .camera__title:before,
   .gallery__title:before {
     content: none;
   }
@@ -1249,7 +1276,8 @@ button.analysis__buttons--disabled {
     position: fixed;
   }
 
-  .upload__video--info * {
+  .upload__video--info h4,
+  .upload__video--pointer {
     font-size: 12px;
   }
 
@@ -1271,8 +1299,30 @@ button.analysis__buttons--disabled {
     bottom: 0;
   }
 
+  #preparing {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  #preparing img {
+    scale: .5;
+  }
+
+  .analysis-menu__panel {
+    transform: translateY(8vh);
+  }
+
+  .analysis-menu__panel img {
+    scale: 0.7 !important;
+  }
+
   .analysis-menu__panel--buttons {
     rotate: 0deg;
+    scale: 0.7
+  }
+
+  .analysis-menu__panel--button {
+    scale: 0.9;
   }
 
   .analysis-menu__panel--button h4 {
@@ -1280,33 +1330,59 @@ button.analysis__buttons--disabled {
   }
 
   .analysis__title {
-    font-size: 40px;
+    font-size: 32px;
+    line-height: 30px;
+    margin-left: -2px;
+    letter-spacing: -2.5px;
+  }
+
+  .analysis__subtitle {
+    display: none;
   }
 
   .analysis__info {
     height: fit-content;
     bottom: unset;
     top: 33vh;
+    flex-direction: column;
+  }
+
+  .analysis__info--buttons {
+    display: flex;
+    width: calc(100vw - 64px);
+  }
+
+  .analysis__info--button h5:first-child {
+    display: none;
   }
 
   .analysis__info--button {
     height: fit-content;
     width: 100px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .analysis__info--breakdown {
-    height: fit-content;
+    height: 35vh;
+    width: calc(100vw - 64px);
+    margin-bottom: 33vh;
+    overflow: scroll;
   }
 
   .analysis__ai-imperfect {
     position: fixed;
     top: unset;
-    bottom: 75px;
+    bottom: 15.5vh;
     font-size: 16px;
   }
 
   .analysis__buttons {
     bottom: 22px;
+    position: fixed;
   }
 
   #analysis .section-subhead {
