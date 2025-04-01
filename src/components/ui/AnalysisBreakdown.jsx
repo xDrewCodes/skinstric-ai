@@ -1,36 +1,40 @@
-
+import React, { useEffect, useState } from 'react'
 import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
-import React, { useEffect, useState } from 'react'
 
-const AnalysisBreakdown = ({ demo, weights, currents }) => {
+const AnalysisBreakdown = ({ editing, setEditing, demo, setDemoPerc, weights, currents, setCurrents }) => {
+    const [selected, setSelected] = useState({
+        race: currents?.race,
+        age: currents?.age,
+        sex: currents?.sex,
+    })
 
-    const [selected, setSelected] = useState(currents)
+    function changeSelection(item, val) {
+        setEditing(true)
 
-    function changeSelection(item) {
-
-        let newSelection = { ...selected }
-        newSelection[demo] = item
-        setSelected(newSelection)
-
-        localStorage.setItem('race', newSelection['race'])
-        localStorage.setItem('age', newSelection['age'])
-        localStorage.setItem('sex', newSelection['sex'])
-
-    }
-
-    useEffect(() => {
-        let locRace = localStorage.getItem('race')
-        let locAge = localStorage.getItem('age')
-        let locSex = localStorage.getItem('sex')
-
-        setSelected({
-            'race': locRace,
-            'age': locAge,
-            'sex': locSex
+        setSelected(prevSelected => {
+            const updatedSelected = { ...prevSelected }
+            updatedSelected[demo] = item
+            return updatedSelected
         })
 
-    }, [])
+        setCurrents(prevSelected => {
+            const updatedSelected = { ...prevSelected }
+            updatedSelected[demo] = item
+            return updatedSelected
+        })
+
+        setDemoPerc(val)
+    }
+
+    let curDemo = demo
+    if (curDemo === 'sex') { curDemo = 'gender' }
+
+    const sortedItems = weights[curDemo]
+        ? Object.entries(weights[curDemo])
+            .map(([key, value]) => ({ key, value: (value * 100).toFixed(2) }))
+            .sort((a, b) => b.value - a.value)
+        : []
 
     return (
         <div className="analysis__info--breakdown">
@@ -39,34 +43,32 @@ const AnalysisBreakdown = ({ demo, weights, currents }) => {
                 <h5>A.I. Confidence</h5>
             </div>
 
-            { currents && weights &&
-                weights[demo].map((item, i) => (
-                    item[0] !== selected[demo]
-                    ?
-                    <div
-                    onClick={() => changeSelection(item[0])}
-                    className="analysis__info--breakdown--item"
-                    key={i}>
-                        <h5>
-                            <img src={ItemIcon} alt="" />
-                            {item[0]}
-                        </h5>
-                        <h5>
-                            {item[1]}{' '}
-                            %
-                        </h5>
-                    </div>
-                    :
-                    <div className="analysis__info--breakdown--item analysis__info--breakdown--item--selected" key={i}>
-                        <h5>
-                            <img src={ItemIconSelect} alt="" />
-                            {item[0]}
-                        </h5>
-                        <h5>
-                            {item[1]}{' '}
-                            %
-                        </h5>
-                    </div>
+            {sortedItems &&
+                sortedItems.map((item, i) => (
+                    item.key !== currents[demo] ? (
+                        <div
+                            key={i}
+                            onClick={() => changeSelection(item.key, item.value)}
+                            className="analysis__info--breakdown--item"
+                        >
+                            <h5>
+                                <img src={ItemIcon} alt="" />
+                                {item.key}
+                            </h5>
+                            <h5>{item.value}%</h5>
+                        </div>
+                    ) : (
+                        <div
+                            key={i}
+                            className="analysis__info--breakdown--item analysis__info--breakdown--item--selected"
+                        >
+                            <h5>
+                                <img src={ItemIconSelect} alt="" />
+                                {item.key}
+                            </h5>
+                            <h5>{item.value}%</h5>
+                        </div>
+                    )
                 ))
             }
         </div>
