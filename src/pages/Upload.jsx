@@ -5,14 +5,16 @@ import UploadOutline2 from '../assets/imports/outline2.png'
 import UploadOutline3 from '../assets/imports/outline3.png'
 import CameraIcon from '../assets/imports/shutter.png'
 import React from 'react'
-import ProceedButton from '../components/ui/ProceedButton'
 import axios from 'axios'
 import { useOutlineAnim } from '../anim'
 import UploadGallery from '../components/ui/UploadGallery'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const Upload = ({ setDemos }) => {
 
     useOutlineAnim()
+    let inTl
 
     let navigate = useNavigate()
 
@@ -37,6 +39,11 @@ const Upload = ({ setDemos }) => {
         navigate('/analysis-menu')
     }
 
+    useGSAP(() => {
+        inTl = gsap.timeline()
+        .from('#upload', { opacity: 0, duration: 1 })
+    })
+
     return (
         <section id="upload">
             <div className="section-subhead">to start analysis</div>
@@ -54,8 +61,7 @@ const Upload = ({ setDemos }) => {
             
             <UploadGallery savePicture={savePicture} askFile={askFile} />
 
-            <BackButton loc="/location" />
-            <ProceedButton loc="/preparing" />
+            <BackButton loc="/introduction" />
 
         </section>
     )

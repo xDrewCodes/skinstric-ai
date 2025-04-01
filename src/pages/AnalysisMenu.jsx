@@ -6,12 +6,21 @@ import AnalysisMenuOutline3 from '../assets/imports/outline3.png'
 import React from 'react'
 import BackButton from '../components/ui/BackButton'
 import { useOutlineAnim } from '../anim'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const AnalysisMenu = () => {
 
     useOutlineAnim()
 
+    let inTl
     let navigate = useNavigate()
+
+    useGSAP(() => {
+        inTl = gsap.timeline()
+        .from('#analysis-menu', { opacity: 0, duration: 0.9 })
+        .from('.analysis-menu__panel', { opacity: 0, duration: 1.1 }, '<')
+    })
 
     return (
         <section id="analysis-menu">
