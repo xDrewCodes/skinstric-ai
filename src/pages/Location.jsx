@@ -66,11 +66,6 @@ const Location = () => {
 
     return (
         <section id="location">
-            <div className="intro__outline">
-                <img className="outline1" src={LocationOutline1} alt="" />
-                <img className="outline2" src={LocationOutline2} alt="" />
-                <img className="outline3" src={LocationOutline3} alt="" />
-            </div>
             <div className="section-subhead">to start analysis</div>
             <div className="location__inp">
                 <legend>{legend}</legend>

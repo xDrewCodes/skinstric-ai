@@ -4,22 +4,26 @@ import IntroOutline3 from '../assets/imports/outline3.png'
 import React, { useEffect, useState } from 'react'
 import BackButton from '../components/ui/BackButton'
 import ProceedButton from '../components/ui/ProceedButton'
-import { useNavigate } from 'react-router-dom'
 import { useOutlineAnim } from '../anim'
+import Location from './Location'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const Intro = () => {
-    
+
     useOutlineAnim()
 
-    let navigate = useNavigate()
+    const [isIntro, setIsIntro] = useState(true)
 
     const [legend, setLegend] = useState('Click to Type')
     const [proceed, setProceed] = useState(false)
 
+    let inTl
+
     function goNext(e) {
         if (e.key === 'Enter') {
             if (checkInp(e.target.value)) {
-                navigate('/location')
+                setIsIntro(false)
             } else {
                 console.log('Invalid Name')
             }
@@ -44,6 +48,12 @@ const Intro = () => {
         return localStorage.getItem('name')
     }
 
+    useGSAP(() => {
+        inTl = gsap.timeline()
+        .from('#intro', { opacity: 0, duration: 1 })
+        .from('.intro__outline', { opacity: 0, duration: 2 })
+    })
+
     useEffect(() => {
         let name = localStorage.getItem('name')
         if (name && checkInp(name)) {
@@ -58,21 +68,31 @@ const Intro = () => {
                 <img className="outline2" src={IntroOutline2} alt="" />
                 <img className="outline3" src={IntroOutline3} alt="" />
             </div>
-            <div className="section-subhead">to start analysis</div>
-            <div className="intro__name">
-                <legend>{legend}</legend>
-                <input
-                    onKeyDown={(e) => goNext(e)}
-                    onFocus={() => setLegend('Introduce Yourself')}
-                    onBlur={() => setLegend('Click to Type')}
-                    onChange={(e) => saveName(e.target.value)}
-                    type="text"
-                    placeholder={fetchName() || `Introduce Yourself`} />
-            </div>
+            {
+                !!isIntro
+                    ?
+                    <section id="intro">
 
-            <BackButton loc="/" />
-            <ProceedButton loc="/location" proceed={proceed} />
+                        <div className="section-subhead">to start analysis</div>
+                        <div className="intro__name">
+                            <legend>{legend}</legend>
+                            <input
+                                onKeyDown={(e) => goNext(e)}
+                                onFocus={() => setLegend('Introduce Yourself')}
+                                onBlur={() => setLegend('Click to Type')}
+                                onChange={(e) => saveName(e.target.value)}
+                                type="text"
+                                placeholder={fetchName() || `Introduce Yourself`} />
+                        </div>
 
+                        <BackButton loc="/" />
+                        <div onClick={() => setIsIntro(false)}>
+                            <ProceedButton loc="/introduction" proceed={proceed} />
+                        </div>
+                    </section>
+                    :
+                    <Location />
+            }
         </section>
     )
 }

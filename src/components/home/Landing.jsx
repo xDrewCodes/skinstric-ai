@@ -15,7 +15,7 @@ const Landing = () => {
     let navigate = useNavigate()
 
     let tl
-
+    let textTl
     const tlRef = React.useRef(null)
 
     useGSAP(() => {
@@ -45,6 +45,17 @@ const Landing = () => {
             .to('.landing__discover', { x: -300, duration: 0.5, ease: 'power1.inOut' }, '<')
             .to('.landing__test--outline2', { x: -40, opacity: 1, duration: 0.5 }, '<')
             .to('.landing__test--outline3', { x: -80, opacity: 1, duration: 0.5 }, '<')
+    })
+
+    useGSAP(() => {
+        textTl = gsap.timeline()
+        .from('.landing__soph', { y: 70, opacity: 0, duration: 0.5 })
+        .from('.landing__skin', { y: 70, opacity: 0, duration: 0.5 }, '<+0.2')
+        .from('.landing__discover--option', { opacity: 0, duration: 1 })
+        .from('.landing__discover--outline', { opacity: 0, duration: 1 }, '<')
+        .from('.landing__test--option', { opacity: 0, duration: 1 }, '<')
+        .from('.landing__test--outline', { opacity: 0, duration: 1 }, '<')
+        .from('.landing__fine', { opacity: 0 })
     })
 
     return (

@@ -32,6 +32,7 @@ const ProceedButton = ({ loc, proceed }) => {
     return (
         <>
             {
+                !!proceed &&
                 <div
                     className="proceed"
                     onClick={() => navigate(loc)}
