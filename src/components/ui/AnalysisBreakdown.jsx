@@ -2,21 +2,10 @@ import React, { useEffect, useState } from 'react'
 import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
 
-const AnalysisBreakdown = ({ editing, setEditing, demo, setDemoPerc, weights, currents, setCurrents }) => {
-    const [selected, setSelected] = useState({
-        race: currents?.race,
-        age: currents?.age,
-        sex: currents?.sex,
-    })
+const AnalysisBreakdown = ({ setEditing, demo, setDemoPerc, weights, currents, setCurrents }) => {
 
     function changeSelection(item, val) {
         setEditing(true)
-
-        setSelected(prevSelected => {
-            const updatedSelected = { ...prevSelected }
-            updatedSelected[demo] = item
-            return updatedSelected
-        })
 
         setCurrents(prevSelected => {
             const updatedSelected = { ...prevSelected }
