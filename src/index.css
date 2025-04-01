@@ -58,13 +58,12 @@ input {
   field-sizing: content;
   min-width: 410px;
   max-width: 500px;
-  width: calc(fit-content + 100px);
-  font-size: 56px;
+  width: 410px;
+  font-size: 50px;
   font-weight: 400;
   line-height: 60px;
   letter-spacing: -5px;
   height: 60px;
-  /* box-shadow: 0 3px 0 0 white, 0 4px 0 0 black; */
   border-bottom: 1px #1a1b1c solid;
 }
 
