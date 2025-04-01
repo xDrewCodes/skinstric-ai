@@ -536,7 +536,33 @@ nav * {
   font-weight: 400;
   text-transform: uppercase;
   margin: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
   cursor: pointer;
+}
+
+.upload__snapshot--confirm {
+  margin-left: 12px;
+  color: #fff;
+  background-color: #1a1b1c;
+  transition: all 0.2s ease;
+}
+
+.upload__snapshot--confirm:hover {
+  background-color: #a0a4ab;
+  color: black;
+}
+
+.upload__snapshot--retake {
+  border: 2px #1a1b1c solid !important;
+  transition: all 0.2s ease;
+}
+
+.upload__snapshot--retake:hover {
+  background-color: #a0a4ab;
+  border-color: #a0a4ab !important;
 }
 
 

@@ -213,11 +213,11 @@ const Upload = ({ setDemos }) => {
                         <div className="upload__snapshot--buttons">
                             <div className="upload__video--notif">Great Shot!</div>
                             <div
-                                onClick={keep}
-                                className="upload__snapshot--confirm">Keep</div>
-                            <div
                                 onClick={retake}
                                 className="upload__snapshot--retake">Retake</div>
+                            <div
+                                onClick={keep}
+                                className="upload__snapshot--confirm">Submit</div>
                         </div>
                     }
                     <video id="camera__video" autoPlay muted></video>
