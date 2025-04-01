@@ -13,8 +13,7 @@ const Analysis = ({ demos }) => {
     const [currents, setCurrents] = useState(null)
     const [demoPerc, setDemoPerc] = useState(0)
 
-    let inTl
-    useGSAP(() => inTl = gsap.timeline().from('#analysis', { opacity: 0, duration: 1.1 }))
+    useGSAP(() => gsap.timeline().from('#analysis', { opacity: 0, duration: 1.1 }))
 
     let navigate = useNavigate()
 
@@ -50,7 +49,7 @@ const Analysis = ({ demos }) => {
             setCurrents({ race: raceCurrent, age: ageCurrent, sex: genderCurrent })
 
             setDemoPerc(demos[demo][raceCurrent] * 100)
-        }
+        } // eslint-disable-next-line
     }, [demos])
 
     function updateCurrent(key, value) {

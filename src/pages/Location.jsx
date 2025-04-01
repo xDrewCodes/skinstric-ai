@@ -1,8 +1,4 @@
 
-
-import LocationOutline1 from '../assets/imports/outline.png'
-import LocationOutline2 from '../assets/imports/outline2.png'
-import LocationOutline3 from '../assets/imports/outline3.png'
 import React, { useEffect, useState } from 'react'
 import BackButton from '../components/ui/BackButton'
 import ProceedButton from '../components/ui/ProceedButton'

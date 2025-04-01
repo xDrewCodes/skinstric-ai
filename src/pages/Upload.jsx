@@ -19,7 +19,6 @@ const Upload = ({ setDemos }) => {
     const [isRecording, setIsRecording] = useState(false)
     const [isSelecting, setIsSelecting] = useState(false)
     useOutlineAnim()
-    let inTl
 
     let navigate = useNavigate()
 
@@ -62,8 +61,6 @@ const Upload = ({ setDemos }) => {
             canvas.height = videoElement.videoHeight
 
             context.drawImage(videoElement, 0, 0, canvas.width, canvas.height)
-
-            const imageData = canvas.toDataURL('image/png')
 
             videoElement.style.display = 'none'
             canvas.style.display = 'block'
@@ -115,7 +112,7 @@ const Upload = ({ setDemos }) => {
     }
 
     useGSAP(() => {
-        inTl = gsap.timeline()
+        gsap.timeline()
             .from('#upload', { opacity: 0, duration: 1 })
     })
 

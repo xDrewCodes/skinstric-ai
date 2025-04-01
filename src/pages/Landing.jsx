@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-import LandingButton from '../../assets/imports/button.png'
-import LandingButtonInner from '../../assets/imports/button-inner.png'
-import LandingButtonHover from '../../assets/imports/button-hover.png'
-import LandingOutline from '../../assets/imports/landing-outline.png'
-import LandingOutline2 from '../../assets/imports/outline2.png'
-import LandingOutline3 from '../../assets/imports/outline3.png'
+import LandingButton from '../assets/imports/button.png'
+import LandingButtonInner from '../assets/imports/button-inner.png'
+import LandingButtonHover from '../assets/imports/button-hover.png'
+import LandingOutline from '../assets/imports/landing-outline.png'
+import LandingOutline2 from '../assets/imports/outline2.png'
+import LandingOutline3 from '../assets/imports/outline3.png'
 import React from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -15,7 +15,6 @@ const Landing = () => {
     let navigate = useNavigate()
 
     let tl
-    let textTl
     const tlRef = React.useRef(null)
 
     useGSAP(() => {
@@ -48,7 +47,7 @@ const Landing = () => {
     })
 
     useGSAP(() => {
-        textTl = gsap.timeline()
+        gsap.timeline()
         .from('.landing__soph', { y: 70, opacity: 0, duration: 0.5 })
         .from('.landing__skin', { y: 70, opacity: 0, duration: 0.5 }, '<+0.2')
         .from('.landing__discover--option', { opacity: 0, duration: 1 })

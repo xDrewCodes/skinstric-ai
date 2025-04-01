@@ -13,11 +13,10 @@ const AnalysisMenu = () => {
 
     useOutlineAnim()
 
-    let inTl
     let navigate = useNavigate()
 
     useGSAP(() => {
-        inTl = gsap.timeline()
+        gsap.timeline()
         .from('#analysis-menu', { opacity: 0, duration: 0.9 })
         .from('.analysis-menu__panel', { opacity: 0, duration: 1.1 }, '<')
     })

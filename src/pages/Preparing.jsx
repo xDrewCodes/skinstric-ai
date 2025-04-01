@@ -10,10 +10,9 @@ import { useGSAP } from '@gsap/react'
 const Preparing = () => {
 
     useOutlineAnim()
-    let inTl
 
     useGSAP(() => {
-        inTl = gsap.timeline()
+        gsap.timeline()
         .from('#preparing', { y: 20, opacity: 0 })
         .from('.outline1', { opacity: 0, duration: 0.9 })
         .from('.outline2', { opacity: 0, duration: 0.9 }, '<')

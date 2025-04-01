@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import ItemIcon from '../../assets/imports/analysis-item.png'
 import ItemIconSelect from '../../assets/imports/analysis-selected-item.png'
 

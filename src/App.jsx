@@ -1,14 +1,13 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home';
 import Nav from './components/Nav';
 import Intro from './pages/Intro';
-import Location from './pages/Location';
 import Upload from './pages/Upload';
 import Preparing from './pages/Preparing';
 import AnalysisMenu from './pages/AnalysisMenu';
 import Analysis from './pages/Analysis';
 import { useState } from 'react';
+import Landing from './pages/Landing';
 
 function App() {
 
@@ -18,7 +17,7 @@ function App() {
     <Router>
       <Nav />
       <Routes>
-        <Route path='/' exact element={<Home />} />
+        <Route path='/' exact element={<Landing />} />
         <Route path='/introduction' element={<Intro />} />
         <Route path='/upload' element={<Upload setDemos={setDemos} />} />
         <Route path='/preparing' element={<Preparing />} />

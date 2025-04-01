@@ -18,8 +18,6 @@ const Intro = () => {
     const [legend, setLegend] = useState('Click to Type')
     const [proceed, setProceed] = useState(false)
 
-    let inTl
-
     function goNext(e) {
         if (e.key === 'Enter') {
             if (checkInp(e.target.value)) {
@@ -49,7 +47,7 @@ const Intro = () => {
     }
 
     useGSAP(() => {
-        inTl = gsap.timeline()
+        gsap.timeline()
         .from('#intro', { opacity: 0, duration: 1 })
         .from('.intro__outline', { opacity: 0, duration: 2 })
     })
