@@ -169,7 +169,7 @@ nav * {
   height: 32px;
   width: 92px;
   border: 2px #1a1b1c solid;
-  cursor: pointer;
+  cursor: not-allowed;
   transition: all 0.15s ease;
 }
 
@@ -242,6 +242,7 @@ nav * {
 .landing__discover--option {
   min-width: 220px;
   transform: translateY(16px);
+  cursor: not-allowed;
 }
 
 .landing__test--option {
@@ -271,6 +272,7 @@ nav * {
 
 .landing__discover--imgs img {
   position: absolute;
+  cursor: not-allowed !important;
 }
 
 .landing__discover--option img,
@@ -645,6 +647,10 @@ nav * {
   transition: all 0.2s ease;
 }
 
+.analysis-menu__panel--button:not(:first-child) {
+  cursor: not-allowed !important;
+}
+
 .analysis-menu__panel--button:hover {
   background-color: #e1e1e2;
 }
@@ -901,6 +907,7 @@ nav * {
   margin-left: 12px;
   color: #fff;
   background-color: #1a1b1c;
+  border: 2px #1a1b1c solid !important;
   transition: all 0.2s ease;
 }
 
@@ -913,6 +920,7 @@ button.analysis__buttons--disabled {
   background-color: #a0a4ab;
   border: 2px #a0a4ab solid !important;
   color: black;
+  cursor: initial;
 }
 
 .analysis__buttons--reset {

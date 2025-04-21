@@ -107,7 +107,7 @@ const Upload = ({ setDemos }) => {
         localStorage.removeItem('race')
         localStorage.removeItem('age')
         localStorage.removeItem('sex')
-        
+
         navigate('/analysis-menu')
     }
 
@@ -124,9 +124,9 @@ const Upload = ({ setDemos }) => {
                     <div className="section-subhead">to start analysis</div>
                     <div className="upload__camera">
                         <div className="upload__camera--outline">
-                            <img className="upload__outline" src={UploadOutline1} alt="" />
-                            <img className="upload__outline" src={UploadOutline2} alt="" />
-                            <img className="upload__outline" src={UploadOutline3} alt="" />
+                            <img className="outline1" src={UploadOutline1} alt="" />
+                            <img className="outline2" src={UploadOutline2} alt="" />
+                            <img className="outline3" src={UploadOutline3} alt="" />
                         </div>
                         <img
                             onClick={getCameraAccess}
@@ -140,9 +140,9 @@ const Upload = ({ setDemos }) => {
                     </div>
                     <div className="upload__gallery">
                         <div className="upload__gallery--outline">
-                            <img className="upload__outline" src={UploadOutline1} alt="" />
-                            <img className="upload__outline" src={UploadOutline2} alt="" />
-                            <img className="upload__outline" src={UploadOutline3} alt="" />
+                            <img className="outline1" src={UploadOutline1} alt="" />
+                            <img className="outline2" src={UploadOutline2} alt="" />
+                            <img className="outline3" src={UploadOutline3} alt="" />
                         </div>
                         <img
                             onClick={askFile}

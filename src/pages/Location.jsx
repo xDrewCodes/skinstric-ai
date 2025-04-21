@@ -17,20 +17,24 @@ const Location = ({ setIsIntro }) => {
 
     async function goNext(e) {
         if (e.key === 'Enter') {
-            navigate('/upload')
+            if (checkInp(e.target.value)) {
 
-            const localName = localStorage.getItem('name')
-            const localLocation = localStorage.getItem('location')
+                navigate('/upload')
 
-            const result = await axios({
-                method: 'POST',
-                data: {
-                    name: localName,
-                    location: localLocation
-                },
-                url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne'
-            })
-            return result
+                const localName = localStorage.getItem('name')
+                const localLocation = localStorage.getItem('location')
+
+                const result = await axios({
+                    method: 'POST',
+                    data: {
+                        name: localName,
+                        location: localLocation
+                    },
+                    url: 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne'
+                })
+                return result
+
+            }
         }
 
     }
@@ -54,11 +58,11 @@ const Location = ({ setIsIntro }) => {
     }
 
     useEffect(() => {
-            let loc = localStorage.getItem('location')
-            if (loc && checkInp(loc)) {
-                setProceed(true)
-            }
-        }, [])
+        let loc = localStorage.getItem('location')
+        if (loc && checkInp(loc)) {
+            setProceed(true)
+        }
+    }, [])
 
     return (
         <section id="location">
@@ -75,7 +79,7 @@ const Location = ({ setIsIntro }) => {
             </div>
 
             <div
-            onClick={setIsIntro}
+                onClick={setIsIntro}
             >
                 <BackButton loc="/introduction" />
             </div>
