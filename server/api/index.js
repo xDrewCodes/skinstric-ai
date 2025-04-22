@@ -1,12 +1,14 @@
 
 const express = require('express')
 const path = require('path')
-const dbu = require('./dbUtils.js')
+const dbu = require('../dbUtils.js')
 
 const app = express()
 const port = process.env.PORT || 8000
 
-app.use(express.static(path.join(__dirname, '../client/build')))
+app.use(express.static(path.join(__dirname, '../../client/build')))
+
+console.log(__dirname)
 
 app.get('/api/users', async ( req, res ) => {
 
