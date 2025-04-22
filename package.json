@@ -19,7 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "build": "node index.js"
   },
   "eslintConfig": {
     "extends": [
