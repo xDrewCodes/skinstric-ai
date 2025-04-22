@@ -1,7 +1,7 @@
 
 const express = require('express')
 const path = require('path')
-const dbu = require('./dbUtils.js')
+const dbu = require('./dbUtilsjs.js')
 
 const app = express()
 const port = process.env.PORT || 8000
