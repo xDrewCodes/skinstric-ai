@@ -28,18 +28,18 @@ const Location = ({ setIsIntro }) => {
 
                 await axios.post(`${API_URL}/create`, null, {
                     params: {
-                      name: localName,
-                      location: localLocation
+                        name: localName,
+                        location: localLocation
                     },
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded"
                     }
-                  })
-                  .then(res => {
-                    console.log(res)
-                    localStorage.setItem('skinstricID', res.data.id)
-                  })
-                  .catch(err => console.error(err))
+                })
+                    .then(res => {
+                        localStorage.setItem('skinstricID', res.data.id)
+                        console.log(res)
+                    })
+                    .catch(err => console.error(err))
 
                 const result = await axios({
                     method: 'POST',
@@ -100,7 +100,19 @@ const Location = ({ setIsIntro }) => {
             >
                 <BackButton loc="/introduction" />
             </div>
-            <ProceedButton loc="/upload" proceed={proceed} />
+            <div onClick={() => {
+                if ( !localStorage.getItem('skinstricID')  ) {
+                    let dumbWorkAround = {
+                        key: 'Enter',
+                        target: {
+                            value: localStorage.getItem('location')
+                        }
+                    }
+                    goNext(dumbWorkAround)
+                }
+            }}>
+                <ProceedButton loc="/upload" proceed={proceed} />
+            </div>
 
         </section>
     )

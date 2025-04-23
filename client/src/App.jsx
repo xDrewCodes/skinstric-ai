@@ -8,6 +8,7 @@ import AnalysisMenu from './pages/AnalysisMenu';
 import Analysis from './pages/Analysis';
 import { useState } from 'react';
 import Landing from './pages/Landing';
+import axios from 'axios';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Landing />} />
         <Route path='/introduction' element={<Intro />} />
-        <Route path='/upload' element={<Upload setDemos={setDemos} />} />
+        <Route path='/upload' element={<Upload setDemos={setDemos} demos={demos} />} />
         <Route path='/preparing' element={<Preparing />} />
         <Route path='/analysis-menu' element={<AnalysisMenu />} />
         <Route path='/analysis' element={<Analysis demos={demos} />} />

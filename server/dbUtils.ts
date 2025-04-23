@@ -1,7 +1,6 @@
 
 import { PrismaClient } from './generated/prisma/client'
 import { Prisma } from './generated/prisma/client'
-import { JsonArray } from './generated/prisma/runtime/library'
 const prisma = new PrismaClient()
 
 async function createUser(userName: string, userLoc: string) {
@@ -10,7 +9,8 @@ async function createUser(userName: string, userLoc: string) {
     try {
         const userCheck = await prisma.user.findMany({
             where: {
-                name: userName
+                name: userName,
+                location: userLoc
             }
         })
 
@@ -22,7 +22,12 @@ async function createUser(userName: string, userLoc: string) {
                 }
             })
         } else {
-            return 'user already exists'
+            return await prisma.user.findFirst({
+                where: {
+                    name: userName,
+                    location: userLoc
+                }
+            })
         }
     } catch (error) {
         console.log('error adding user')
@@ -61,16 +66,18 @@ interface WeightedLabel {
 }
 
 
-export const editUser = async (
+const editUser = async (
     userId: string,
     name: string,
     image: string,
     location: string,
     age: string,
     race: string,
-    gender: string
+    gender: string,
+    demos: Prisma.InputJsonValue
 ) => {
     try {
+
         const updatedUser = await prisma.user.update({
             where: { id: userId },
             data: {
@@ -79,7 +86,8 @@ export const editUser = async (
                 image,
                 age,
                 gender,
-                race
+                race,
+                demos
             }
         })
 

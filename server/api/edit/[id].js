@@ -14,8 +14,9 @@ export default async function handler(req, res) {
   }
 
   const userId = req.query.id
+  const { name, location, age, race, gender, image, demos } = req.body
 
-  const { name, location, age, race, gender, image } = req.query
+
   res.status(200).json(await editUser(
     userId,
     name,
@@ -23,7 +24,8 @@ export default async function handler(req, res) {
     location,
     age,
     race,
-    gender
+    gender,
+    demos
   ))
 
 }

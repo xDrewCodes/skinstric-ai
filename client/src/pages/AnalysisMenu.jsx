@@ -8,6 +8,7 @@ import BackButton from '../components/ui/BackButton'
 import { useOutlineAnim } from '../anim'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import axios from 'axios'
 
 const AnalysisMenu = () => {
 
@@ -17,8 +18,8 @@ const AnalysisMenu = () => {
 
     useGSAP(() => {
         gsap.timeline()
-        .from('#analysis-menu', { opacity: 0, duration: 0.9 })
-        .from('.analysis-menu__panel', { opacity: 0, duration: 1.1 }, '<')
+            .from('#analysis-menu', { opacity: 0, duration: 0.9 })
+            .from('.analysis-menu__panel', { opacity: 0, duration: 1.1 }, '<')
     })
 
     return (

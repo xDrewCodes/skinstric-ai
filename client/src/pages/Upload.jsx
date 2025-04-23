@@ -15,11 +15,22 @@ import { useOutlineAnim } from '../anim'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
-const Upload = ({ setDemos }) => {
+const Upload = ({ demos, setDemos }) => {
 
     const [isRecording, setIsRecording] = useState(false)
     const [isSelecting, setIsSelecting] = useState(false)
     useOutlineAnim()
+
+    const API_URL = process.env.REACT_APP_BACKEND_URL
+    const userId = localStorage.getItem('skinstricID')
+
+    console.log(!!userId, !demos)
+
+    async function initDemos() {
+        await axios.get(`${API_URL}/user/${userId}`).then(res => setDemos(res.data.demos)).catch(err => console.error(err))
+    }
+
+    if (!!userId && !demos) { initDemos() }
 
     let navigate = useNavigate()
 
@@ -175,7 +186,7 @@ const Upload = ({ setDemos }) => {
                     <BackButton loc="/introduction" />
 
                             {
-                                !!localStorage.getItem('race') &&
+                                !!demos &&
                                 <ProceedButton loc="/analysis-menu" proceed="true" />
                             }
 

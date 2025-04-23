@@ -907,9 +907,7 @@ export namespace Prisma {
     age: number
     gender: number
     race: number
-    races: number
-    genders: number
-    ages: number
+    demos: number
     _all: number
   }
 
@@ -942,9 +940,7 @@ export namespace Prisma {
     age?: true
     gender?: true
     race?: true
-    races?: true
-    genders?: true
-    ages?: true
+    demos?: true
     _all?: true
   }
 
@@ -1028,9 +1024,7 @@ export namespace Prisma {
     age: string | null
     gender: string | null
     race: string | null
-    races: JsonValue | null
-    genders: JsonValue | null
-    ages: JsonValue | null
+    demos: JsonValue | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1058,9 +1052,7 @@ export namespace Prisma {
     age?: boolean
     gender?: boolean
     race?: boolean
-    races?: boolean
-    genders?: boolean
-    ages?: boolean
+    demos?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1071,9 +1063,7 @@ export namespace Prisma {
     age?: boolean
     gender?: boolean
     race?: boolean
-    races?: boolean
-    genders?: boolean
-    ages?: boolean
+    demos?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1084,9 +1074,7 @@ export namespace Prisma {
     age?: boolean
     gender?: boolean
     race?: boolean
-    races?: boolean
-    genders?: boolean
-    ages?: boolean
+    demos?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1097,12 +1085,10 @@ export namespace Prisma {
     age?: boolean
     gender?: boolean
     race?: boolean
-    races?: boolean
-    genders?: boolean
-    ages?: boolean
+    demos?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location" | "image" | "age" | "gender" | "race" | "races" | "genders" | "ages", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location" | "image" | "age" | "gender" | "race" | "demos", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -1115,9 +1101,7 @@ export namespace Prisma {
       age: string | null
       gender: string | null
       race: string | null
-      races: Prisma.JsonValue | null
-      genders: Prisma.JsonValue | null
-      ages: Prisma.JsonValue | null
+      demos: Prisma.JsonValue | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1548,9 +1532,7 @@ export namespace Prisma {
     readonly age: FieldRef<"User", 'String'>
     readonly gender: FieldRef<"User", 'String'>
     readonly race: FieldRef<"User", 'String'>
-    readonly races: FieldRef<"User", 'Json'>
-    readonly genders: FieldRef<"User", 'Json'>
-    readonly ages: FieldRef<"User", 'Json'>
+    readonly demos: FieldRef<"User", 'Json'>
   }
     
 
@@ -1939,9 +1921,7 @@ export namespace Prisma {
     age: 'age',
     gender: 'gender',
     race: 'race',
-    races: 'races',
-    genders: 'genders',
-    ages: 'ages'
+    demos: 'demos'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -2049,9 +2029,7 @@ export namespace Prisma {
     age?: StringNullableFilter<"User"> | string | null
     gender?: StringNullableFilter<"User"> | string | null
     race?: StringNullableFilter<"User"> | string | null
-    races?: JsonNullableFilter<"User">
-    genders?: JsonNullableFilter<"User">
-    ages?: JsonNullableFilter<"User">
+    demos?: JsonNullableFilter<"User">
   }
 
   export type UserOrderByWithRelationInput = {
@@ -2062,9 +2040,7 @@ export namespace Prisma {
     age?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     race?: SortOrderInput | SortOrder
-    races?: SortOrderInput | SortOrder
-    genders?: SortOrderInput | SortOrder
-    ages?: SortOrderInput | SortOrder
+    demos?: SortOrderInput | SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -2078,9 +2054,7 @@ export namespace Prisma {
     age?: StringNullableFilter<"User"> | string | null
     gender?: StringNullableFilter<"User"> | string | null
     race?: StringNullableFilter<"User"> | string | null
-    races?: JsonNullableFilter<"User">
-    genders?: JsonNullableFilter<"User">
-    ages?: JsonNullableFilter<"User">
+    demos?: JsonNullableFilter<"User">
   }, "id">
 
   export type UserOrderByWithAggregationInput = {
@@ -2091,9 +2065,7 @@ export namespace Prisma {
     age?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     race?: SortOrderInput | SortOrder
-    races?: SortOrderInput | SortOrder
-    genders?: SortOrderInput | SortOrder
-    ages?: SortOrderInput | SortOrder
+    demos?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -2110,9 +2082,7 @@ export namespace Prisma {
     age?: StringNullableWithAggregatesFilter<"User"> | string | null
     gender?: StringNullableWithAggregatesFilter<"User"> | string | null
     race?: StringNullableWithAggregatesFilter<"User"> | string | null
-    races?: JsonNullableWithAggregatesFilter<"User">
-    genders?: JsonNullableWithAggregatesFilter<"User">
-    ages?: JsonNullableWithAggregatesFilter<"User">
+    demos?: JsonNullableWithAggregatesFilter<"User">
   }
 
   export type UserCreateInput = {
@@ -2123,9 +2093,7 @@ export namespace Prisma {
     age?: string | null
     gender?: string | null
     race?: string | null
-    races?: NullableJsonNullValueInput | InputJsonValue
-    genders?: NullableJsonNullValueInput | InputJsonValue
-    ages?: NullableJsonNullValueInput | InputJsonValue
+    demos?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUncheckedCreateInput = {
@@ -2136,9 +2104,7 @@ export namespace Prisma {
     age?: string | null
     gender?: string | null
     race?: string | null
-    races?: NullableJsonNullValueInput | InputJsonValue
-    genders?: NullableJsonNullValueInput | InputJsonValue
-    ages?: NullableJsonNullValueInput | InputJsonValue
+    demos?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUpdateInput = {
@@ -2149,9 +2115,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     race?: NullableStringFieldUpdateOperationsInput | string | null
-    races?: NullableJsonNullValueInput | InputJsonValue
-    genders?: NullableJsonNullValueInput | InputJsonValue
-    ages?: NullableJsonNullValueInput | InputJsonValue
+    demos?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2162,9 +2126,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     race?: NullableStringFieldUpdateOperationsInput | string | null
-    races?: NullableJsonNullValueInput | InputJsonValue
-    genders?: NullableJsonNullValueInput | InputJsonValue
-    ages?: NullableJsonNullValueInput | InputJsonValue
+    demos?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserCreateManyInput = {
@@ -2175,9 +2137,7 @@ export namespace Prisma {
     age?: string | null
     gender?: string | null
     race?: string | null
-    races?: NullableJsonNullValueInput | InputJsonValue
-    genders?: NullableJsonNullValueInput | InputJsonValue
-    ages?: NullableJsonNullValueInput | InputJsonValue
+    demos?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUpdateManyMutationInput = {
@@ -2188,9 +2148,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     race?: NullableStringFieldUpdateOperationsInput | string | null
-    races?: NullableJsonNullValueInput | InputJsonValue
-    genders?: NullableJsonNullValueInput | InputJsonValue
-    ages?: NullableJsonNullValueInput | InputJsonValue
+    demos?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -2201,9 +2159,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     race?: NullableStringFieldUpdateOperationsInput | string | null
-    races?: NullableJsonNullValueInput | InputJsonValue
-    genders?: NullableJsonNullValueInput | InputJsonValue
-    ages?: NullableJsonNullValueInput | InputJsonValue
+    demos?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2272,9 +2228,7 @@ export namespace Prisma {
     age?: SortOrder
     gender?: SortOrder
     race?: SortOrder
-    races?: SortOrder
-    genders?: SortOrder
-    ages?: SortOrder
+    demos?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {

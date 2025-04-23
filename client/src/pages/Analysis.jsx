@@ -23,6 +23,7 @@ const Analysis = ({ demos }) => {
 
     useEffect(() => {
         if (demos) {
+
             const races = Object.entries(demos.race)
                 .map(item => [item[0], (item[1] * 100).toFixed(2)])
                 .sort((a, b) => b[1] - a[1])
@@ -69,14 +70,21 @@ const Analysis = ({ demos }) => {
             })
             .catch(err => console.error(err))
 
-        const predictedAge = currents.age
-        const predictedGender = currents.sex
-        const predictedRace = currents.race
         const localImage = '0'
 
-        await axios.post(`${API_URL}/edit/${userId}?name=${localName}&image=${localImage}&location=${localLocation}&age=${predictedAge}&race=${predictedRace}&gender=${predictedGender}`)
-            .then(res => true)
-            .catch(err => console.error(err))
+        console.log(demos)
+
+        await axios.post(`${API_URL}/edit/${userId}`, {
+            name: localName,
+            image: localImage,
+            location: localLocation,
+            age: currents.age,
+            race: currents.race,
+            gender: currents.sex,
+            demos: demos
+        })
+        .then(res => true)
+        .catch(err => console.error(err));
     }
 
     function updateCurrent(key, value) {

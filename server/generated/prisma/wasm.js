@@ -125,9 +125,7 @@ exports.Prisma.UserScalarFieldEnum = {
   age: 'age',
   gender: 'gender',
   race: 'race',
-  races: 'races',
-  genders: 'genders',
-  ages: 'ages'
+  demos: 'demos'
 };
 
 exports.Prisma.SortOrder = {

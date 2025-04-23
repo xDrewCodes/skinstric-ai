@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.editUser = void 0;
 var client_1 = require("./generated/prisma/client");
 var prisma = new client_1.PrismaClient();
 function createUser(userName, userLoc) {
@@ -49,10 +48,11 @@ function createUser(userName, userLoc) {
                     console.log(userLoc);
                     _a.label = 1;
                 case 1:
-                    _a.trys.push([1, 6, , 7]);
+                    _a.trys.push([1, 7, , 8]);
                     return [4 /*yield*/, prisma.user.findMany({
                             where: {
-                                name: userName
+                                name: userName,
+                                location: userLoc
                             }
                         })];
                 case 2:
@@ -65,13 +65,19 @@ function createUser(userName, userLoc) {
                             }
                         })];
                 case 3: return [2 /*return*/, _a.sent()];
-                case 4: return [2 /*return*/, 'user already exists'];
-                case 5: return [3 /*break*/, 7];
-                case 6:
+                case 4: return [4 /*yield*/, prisma.user.findFirst({
+                        where: {
+                            name: userName,
+                            location: userLoc
+                        }
+                    })];
+                case 5: return [2 /*return*/, _a.sent()];
+                case 6: return [3 /*break*/, 8];
+                case 7:
                     error_1 = _a.sent();
                     console.log('error adding user');
-                    return [3 /*break*/, 7];
-                case 7: return [2 /*return*/];
+                    return [3 /*break*/, 8];
+                case 8: return [2 /*return*/];
             }
         });
     });
@@ -125,7 +131,7 @@ function getUser(id) {
         });
     });
 }
-var editUser = function (userId, name, image, location, age, race, gender) { return __awaiter(void 0, void 0, void 0, function () {
+var editUser = function (userId, name, image, location, age, race, gender, demos) { return __awaiter(void 0, void 0, void 0, function () {
     var updatedUser, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -139,7 +145,8 @@ var editUser = function (userId, name, image, location, age, race, gender) { ret
                             image: image,
                             age: age,
                             gender: gender,
-                            race: race
+                            race: race,
+                            demos: demos
                         }
                     })];
             case 1:
@@ -153,11 +160,10 @@ var editUser = function (userId, name, image, location, age, race, gender) { ret
         }
     });
 }); };
-exports.editUser = editUser;
 module.exports = {
     createUser: createUser,
     getUsers: getUsers,
     getUser: getUser,
-    editUser: exports.editUser
+    editUser: editUser
 };
 //# sourceMappingURL=dbUtils.js.map
