@@ -8,9 +8,7 @@ import { useGSAP } from '@gsap/react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const Analysis = ({ demos }) => {
-
-    const API_URL = process.env.REACT_APP_BACKEND_URL
+const Analysis = ({ demos, setDemos }) => {
 
     const [demo, setDemo] = useState('race')
     const [editing, setEditing] = useState(false)
@@ -19,9 +17,20 @@ const Analysis = ({ demos }) => {
 
     useGSAP(() => gsap.timeline().from('#analysis', { opacity: 0, duration: 1.1 }))
 
+    const API_URL = process.env.REACT_APP_BACKEND_URL
+    const userId = localStorage.getItem('skinstricID')
+
+    async function initDemos() {
+        await axios.get(`${API_URL}/user/${userId}`).then(res => setDemos(res.data.demos)).catch(err => console.error(err))
+        console.log(demos)
+    }
+
     let navigate = useNavigate()
 
     useEffect(() => {
+
+        if (!!userId && !demos) { initDemos() }
+
         if (demos) {
 
             const races = Object.entries(demos.race)

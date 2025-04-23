@@ -22,7 +22,7 @@ function App() {
         <Route path='/upload' element={<Upload setDemos={setDemos} demos={demos} />} />
         <Route path='/preparing' element={<Preparing />} />
         <Route path='/analysis-menu' element={<AnalysisMenu />} />
-        <Route path='/analysis' element={<Analysis demos={demos} />} />
+        <Route path='/analysis' element={<Analysis setDemos={setDemos} demos={demos} />} />
       </Routes>
     </Router>
   )
