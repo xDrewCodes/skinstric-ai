@@ -21,7 +21,10 @@ const Analysis = ({ demos, setDemos }) => {
     const userId = localStorage.getItem('skinstricID')
 
     async function initDemos() {
-        await axios.get(`${API_URL}/user/${userId}`).then(res => setDemos(res.data.demos)).catch(err => console.error(err))
+        await axios.get(`${API_URL}/user/${userId}`).then(res => {
+            setDemos(res.data.demos)
+            setCurrents({ race: res.data.race, age: res.data.age, sex: res.data.gender })
+        }).catch(err => console.error(err))
         console.log(demos)
     }
 
@@ -49,13 +52,13 @@ const Analysis = ({ demos, setDemos }) => {
             let ageCurrent = ages[0][0]
             let genderCurrent = genders[0][0]
 
-            if (!localStorage.getItem('race')) { localStorage.setItem('race', raceCurrent) } else {
+            if (!localStorage.getItem('race') && !currents.race) { localStorage.setItem('race', raceCurrent) } else {
                 raceCurrent = localStorage.getItem('race')
             }
-            if (!localStorage.getItem('age')) { localStorage.setItem('age', ageCurrent) } else {
+            if (!localStorage.getItem('age') && !currents.age) { localStorage.setItem('age', ageCurrent) } else {
                 ageCurrent = localStorage.getItem('age')
             }
-            if (!localStorage.getItem('sex')) { localStorage.setItem('sex', genderCurrent) } else {
+            if (!localStorage.getItem('sex') && !currents.sex) { localStorage.setItem('sex', genderCurrent) } else {
                 genderCurrent = localStorage.getItem('sex')
             }
 
