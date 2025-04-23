@@ -8,6 +8,8 @@ import { useOutlineAnim } from '../anim'
 
 const Location = ({ setIsIntro }) => {
 
+    const API_URL = process.env.BACKEND_URL
+
     useOutlineAnim()
 
     const [legend, setLegend] = useState('Click to Type')
@@ -24,7 +26,7 @@ const Location = ({ setIsIntro }) => {
                 const localName = localStorage.getItem('name')
                 const localLocation = localStorage.getItem('location')
 
-                await axios.post(`/api/create?name=${localName}&location=${localLocation}`).then( (res) => {
+                await axios.post(`${API_URL}/create?name=${localName}&location=${localLocation}`).then( (res) => {
                     console.log(res)
                 })
 
