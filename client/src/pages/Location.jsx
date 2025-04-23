@@ -26,9 +26,17 @@ const Location = ({ setIsIntro }) => {
                 const localName = localStorage.getItem('name')
                 const localLocation = localStorage.getItem('location')
 
-                await axios.post(`${API_URL}/create?name=${localName}&location=${localLocation}`).then( (res) => {
-                    console.log(res)
-                })
+                await axios.post(`${API_URL}/create`, null, {
+                    params: {
+                      name: localName,
+                      location: localLocation
+                    },
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                  })
+                  .then(res => console.log(res))
+                  .catch(err => console.error(err))
 
                 const result = await axios({
                     method: 'POST',
