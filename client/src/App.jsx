@@ -8,7 +8,6 @@ import AnalysisMenu from './pages/AnalysisMenu';
 import Analysis from './pages/Analysis';
 import { useState } from 'react';
 import Landing from './pages/Landing';
-import axios from 'axios';
 
 function App() {
 
