@@ -59,24 +59,23 @@ const Analysis = ({ demos }) => {
     async function dbWrite() {
 
         const userId = localStorage.getItem('skinstricID')
-        let localName = 'bob'
-        let localLocation = 'ny'
-
-        console.log(userId, localName, localLocation)
+        let localName
+        let localLocation
 
         await axios.get(`${API_URL}/user/${userId}`)
-            .then(res => console.log(res))
+            .then(res => {
+                localName = res.data.name
+                localLocation = res.data.location
+            })
             .catch(err => console.error(err))
-
-        console.log('first hit')
 
         const predictedAge = currents.age
         const predictedGender = currents.sex
         const predictedRace = currents.race
-        const localImage = 'imagefiller'
+        const localImage = '0'
 
-        await axios.post(`${API_URL}/edit/${userId}?name=${localName}&location=${localLocation}&age=${predictedAge}&race=${predictedRace}&gender=${predictedGender}`)
-            .then(res => console.log(res))
+        await axios.post(`${API_URL}/edit/${userId}?name=${localName}&image=${localImage}&location=${localLocation}&age=${predictedAge}&race=${predictedRace}&gender=${predictedGender}`)
+            .then(res => true)
             .catch(err => console.error(err))
     }
 

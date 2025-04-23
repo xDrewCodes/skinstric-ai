@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import BackButton from '../components/ui/BackButton'
+import ProceedButton from '../components/ui/ProceedButton'
 import GoBackButton from '../assets/imports/upload-button.png'
 import UploadOutline1 from '../assets/imports/outline.png'
 import UploadOutline2 from '../assets/imports/outline2.png'
@@ -172,6 +173,12 @@ const Upload = ({ setDemos }) => {
                     </div>
 
                     <BackButton loc="/introduction" />
+
+                            {
+                                !!localStorage.getItem('race') &&
+                                <ProceedButton loc="/analysis-menu" proceed="true" />
+                            }
+
                 </>
                 :
                 <div className="upload__video">
