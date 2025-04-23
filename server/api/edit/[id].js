@@ -1,4 +1,4 @@
-import { getUser } from '../../dbUtilsjs.js'  // or wherever your function lives
+import { editUser } from '../../dbUtilsjs.js'  // or wherever your function lives
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -9,11 +9,21 @@ export default async function handler(req, res) {
     return res.status(200).end()
   }
 
-  if (req.method !== 'GET') {
+  if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
 
   const userId = req.query.id
-  res.status(200).json(await getUser(userId))
+
+  const { name, location, age, race, gender, image } = req.query
+  res.status(200).json(await editUser(
+    userId,
+    name,
+    image,
+    location,
+    age,
+    race,
+    gender
+  ))
 
 }

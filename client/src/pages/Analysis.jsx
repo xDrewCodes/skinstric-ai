@@ -75,19 +75,9 @@ const Analysis = ({ demos }) => {
         const predictedRace = currents.race
         const localImage = 'imagefiller'
 
-        console.log(predictedRace, predictedAge, predictedGender, localImage)
-
-        await axios.post(`${API_URL}/edit/${userId}`, {
-            name: localName,
-            location: localLocation,
-            image: localImage,
-            age: predictedAge,
-            gender: predictedGender,
-            race: predictedRace
-        }).then(res => console.log(res)).catch(err => console.error(err))
-
-        console.log('second hit')
-
+        await axios.post(`${API_URL}/edit/${userId}?name=${localName}&location=${localLocation}&age=${predictedAge}&race=${predictedRace}&gender=${predictedGender}`)
+            .then(res => console.log(res))
+            .catch(err => console.error(err))
     }
 
     function updateCurrent(key, value) {

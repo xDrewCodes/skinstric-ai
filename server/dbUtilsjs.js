@@ -125,7 +125,7 @@ function getUser(id) {
         });
     });
 }
-var editUser = function (userId, name, image, location, age, gender, race) { return __awaiter(void 0, void 0, void 0, function () {
+var editUser = function (userId, name, image, location, age, race, gender) { return __awaiter(void 0, void 0, void 0, function () {
     var updatedUser, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {

@@ -67,8 +67,8 @@ export const editUser = async (
     image: string,
     location: string,
     age: string,
-    gender: string,
-    race: string
+    race: string,
+    gender: string
 ) => {
     try {
         const updatedUser = await prisma.user.update({
