@@ -12,8 +12,6 @@ import { useGSAP } from '@gsap/react'
 
 const Landing = () => {
 
-    const API_URL = process.env.REACT_APP_BACKEND_URL
-
     let navigate = useNavigate()
 
     let tl
@@ -106,7 +104,7 @@ const Landing = () => {
                 </h4>
             </div>
             <div className="landing__title">
-                <a href={`${API_URL}/users`}><h1 className="landing__soph">Sophisticated</h1></a>
+                <h1 className="landing__soph">Sophisticated</h1>
                 <h1 className="landing__skin">skincare</h1>
             </div>
             <div className="landing__test">

@@ -8,7 +8,7 @@ import { useOutlineAnim } from '../anim'
 
 const Location = ({ setIsIntro }) => {
 
-    const API_URL = process.env.BACKEND_URL
+    const API_URL = process.env.REACT_APP_BACKEND_URL
 
     useOutlineAnim()
 
