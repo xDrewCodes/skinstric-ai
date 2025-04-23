@@ -8,7 +8,6 @@ import { useOutlineAnim } from '../anim'
 import Location from './Location'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import axios from 'axios'
 
 const Intro = () => {
 
