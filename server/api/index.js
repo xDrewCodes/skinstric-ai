@@ -18,7 +18,7 @@ app.get('/api/users/:id', async ( req, res ) => {
 
     const userId = req.params.id
     console.log(userId)
-
+  
     const user = await dbu.getUser(userId)
     res.json(user)
 
