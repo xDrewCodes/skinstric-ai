@@ -8,7 +8,6 @@ import BackButton from '../components/ui/BackButton'
 import { useOutlineAnim } from '../anim'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import axios from 'axios'
 
 const AnalysisMenu = () => {
 

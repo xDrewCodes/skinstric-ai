@@ -8,11 +8,28 @@ import LandingOutline3 from '../assets/imports/outline3.png'
 import React from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import axios from 'axios'
 
 
 const Landing = () => {
 
-    let navigate = useNavigate()
+    const API_URL = process.env.REACT_APP_BACKEND_URL
+    const userId = localStorage.getItem('skinstricID')
+    const localName = localStorage.getItem('name')
+    const localLocation = localStorage.getItem('location')
+
+    async function initIntro() {
+        await axios.get(`${API_URL}/user/${userId}`).then(res => {
+            localStorage.setItem('name', res.data.name)
+            localStorage.setItem('location', res.data.location)
+        }).catch(err => console.error(err))
+    }
+
+    if (!!userId && !localName && !localLocation) {
+        initIntro()
+    }
+
+        let navigate = useNavigate()
 
     let tl
     const tlRef = React.useRef(null)

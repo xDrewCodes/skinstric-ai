@@ -23,9 +23,10 @@ const Analysis = ({ demos, setDemos }) => {
     async function initDemos() {
         await axios.get(`${API_URL}/user/${userId}`).then(res => {
             setDemos(res.data.demos)
-            setCurrents({ race: res.data.race, age: res.data.age, sex: res.data.gender })
+            localStorage.setItem('race', res.data.race)
+            localStorage.setItem('age', res.data.age)
+            localStorage.setItem('sex', res.data.gender)
         }).catch(err => console.error(err))
-        console.log(demos)
     }
 
     let navigate = useNavigate()
@@ -52,18 +53,22 @@ const Analysis = ({ demos, setDemos }) => {
             let ageCurrent = ages[0][0]
             let genderCurrent = genders[0][0]
 
-            if (!localStorage.getItem('race') && !currents.race) { localStorage.setItem('race', raceCurrent) } else {
+            if (!localStorage.getItem('race')) {
+                setCurrents({
+                    race: raceCurrent,
+                    age: ageCurrent,
+                    sex: genderCurrent
+                })
+            } else {
+
                 raceCurrent = localStorage.getItem('race')
-            }
-            if (!localStorage.getItem('age') && !currents.age) { localStorage.setItem('age', ageCurrent) } else {
-                ageCurrent = localStorage.getItem('age')
-            }
-            if (!localStorage.getItem('sex') && !currents.sex) { localStorage.setItem('sex', genderCurrent) } else {
-                genderCurrent = localStorage.getItem('sex')
-            }
 
-
-            setCurrents({ race: raceCurrent, age: ageCurrent, sex: genderCurrent })
+                setCurrents({
+                    race: localStorage.getItem('race'),
+                    age: localStorage.getItem('age'),
+                    sex: localStorage.getItem('sex')
+                })
+            }
 
             setDemoPerc(demos[demo][raceCurrent] * 100)
         } // eslint-disable-next-line
@@ -84,8 +89,6 @@ const Analysis = ({ demos, setDemos }) => {
 
         const localImage = '0'
 
-        console.log(demos)
-
         await axios.post(`${API_URL}/edit/${userId}`, {
             name: localName,
             image: localImage,
@@ -95,8 +98,8 @@ const Analysis = ({ demos, setDemos }) => {
             gender: currents.sex,
             demos: demos
         })
-        .then(res => true)
-        .catch(err => console.error(err));
+            .then(res => true)
+            .catch(err => console.error(err));
     }
 
     function updateCurrent(key, value) {

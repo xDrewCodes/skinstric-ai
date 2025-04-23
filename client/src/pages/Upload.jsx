@@ -24,8 +24,6 @@ const Upload = ({ demos, setDemos }) => {
     const API_URL = process.env.REACT_APP_BACKEND_URL
     const userId = localStorage.getItem('skinstricID')
 
-    console.log(!!userId, !demos)
-
     async function initDemos() {
         await axios.get(`${API_URL}/user/${userId}`).then(res => setDemos(res.data.demos)).catch(err => console.error(err))
     }
