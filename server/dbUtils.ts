@@ -1,5 +1,7 @@
 
 import { PrismaClient } from './generated/prisma/client'
+import { Prisma } from './generated/prisma/client'
+import { JsonArray } from './generated/prisma/runtime/library'
 const prisma = new PrismaClient()
 
 async function createUser(userName: string, userLoc: string) {
@@ -52,9 +54,45 @@ async function getUser(id: string) {
     }
 }
 
+interface WeightedLabel {
+    label: string
+    weight: number
+}
+
+
+export const editUser = async (
+    userId: string,
+    name: string,
+    image: string,
+    location: string,
+    age: string,
+    gender: string,
+    race: string
+) => {
+    try {
+        const updatedUser = await prisma.user.update({
+            where: { id: userId },
+            data: {
+                name,
+                location,
+                image,
+                age,
+                gender,
+                race
+            }
+        })
+
+        return updatedUser
+    } catch (error) {
+        console.error('Error updating user:', error)
+        return null
+    }
+}
+
 
 module.exports = {
     createUser,
     getUsers,
-    getUser
+    getUser,
+    editUser
 }

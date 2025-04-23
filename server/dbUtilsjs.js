@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.editUser = void 0;
 var client_1 = require("./generated/prisma/client");
 var prisma = new client_1.PrismaClient();
 function createUser(userName, userLoc) {
@@ -121,9 +122,39 @@ function getUser(id) {
         });
     });
 }
+var editUser = function (userId, name, image, location, age, gender, race) { return __awaiter(void 0, void 0, void 0, function () {
+    var updatedUser, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, prisma.user.update({
+                        where: { id: userId },
+                        data: {
+                            name: name,
+                            location: location,
+                            image: image,
+                            age: age,
+                            gender: gender,
+                            race: race
+                        }
+                    })];
+            case 1:
+                updatedUser = _a.sent();
+                return [2 /*return*/, updatedUser];
+            case 2:
+                error_4 = _a.sent();
+                console.error('Error updating user:', error_4);
+                return [2 /*return*/, null];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.editUser = editUser;
 module.exports = {
     createUser: createUser,
     getUsers: getUsers,
-    getUser: getUser
+    getUser: getUser,
+    editUser: exports.editUser
 };
 //# sourceMappingURL=dbUtils.js.map

@@ -6,8 +6,12 @@ import AnalysisChart from '../components/ui/AnalysisChart'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Analysis = ({ demos }) => {
+
+    const API_URL = process.env.REACT_APP_BACKEND_URL
+
     const [demo, setDemo] = useState('race')
     const [editing, setEditing] = useState(false)
     const [currents, setCurrents] = useState(null)
@@ -35,13 +39,13 @@ const Analysis = ({ demos }) => {
             let ageCurrent = ages[0][0]
             let genderCurrent = genders[0][0]
 
-            if (!localStorage.getItem('race')) {localStorage.setItem('race', raceCurrent)} else {
+            if (!localStorage.getItem('race')) { localStorage.setItem('race', raceCurrent) } else {
                 raceCurrent = localStorage.getItem('race')
             }
-            if (!localStorage.getItem('age')) {localStorage.setItem('age', ageCurrent)} else {
+            if (!localStorage.getItem('age')) { localStorage.setItem('age', ageCurrent) } else {
                 ageCurrent = localStorage.getItem('age')
             }
-            if (!localStorage.getItem('sex')) {localStorage.setItem('sex', genderCurrent)} else {
+            if (!localStorage.getItem('sex')) { localStorage.setItem('sex', genderCurrent) } else {
                 genderCurrent = localStorage.getItem('sex')
             }
 
@@ -51,6 +55,44 @@ const Analysis = ({ demos }) => {
             setDemoPerc(demos[demo][raceCurrent] * 100)
         } // eslint-disable-next-line
     }, [demos])
+
+    async function dbWrite() {
+
+        const userId = localStorage.getItem('skinstricID')
+        let localName = 'bob'
+        let localLocation = 'ny'
+
+        console.log(userId, localName, localLocation)
+
+        await axios.post(`${API_URL}/users/${userId}`, null, {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        })
+            .then(res => console.log(res))
+            .catch(err => console.error(err))
+
+        console.log('first hit')
+
+        const predictedAge = currents.age
+        const predictedGender = currents.sex
+        const predictedRace = currents.race
+        const localImage = 'imagefiller'
+
+        console.log(predictedRace, predictedAge, predictedGender, localImage)
+
+        await axios.post(`${API_URL}/edit/${userId}`, {
+            name: localName,
+            location: localLocation,
+            image: localImage,
+            age: predictedAge,
+            gender: predictedGender,
+            race: predictedRace
+        }).then(res => console.log(res)).catch(err => console.error(err))
+
+        console.log('second hit')
+
+    }
 
     function updateCurrent(key, value) {
         setCurrents(prev => ({ ...prev, [key]: value }))
@@ -62,6 +104,7 @@ const Analysis = ({ demos }) => {
         localStorage.setItem('age', currents?.age)
         localStorage.setItem('sex', currents?.sex)
         setEditing(false)
+        dbWrite()
     }
 
     function resetDemos() {
@@ -80,8 +123,8 @@ const Analysis = ({ demos }) => {
                 <div className="analysis__no-data">
                     You need to submit an image to be scanned to view your demographics.
                     <div
-                    onClick={() => navigate('/upload')}
-                    className="analysis__no-data--link">Upload image</div>
+                        onClick={() => navigate('/upload')}
+                        className="analysis__no-data--link">Upload image</div>
                 </div>
             </section>
         )

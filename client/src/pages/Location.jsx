@@ -35,7 +35,10 @@ const Location = ({ setIsIntro }) => {
                       "Content-Type": "application/x-www-form-urlencoded"
                     }
                   })
-                  .then(res => console.log(res))
+                  .then(res => {
+                    console.log(res)
+                    localStorage.setItem('skinstricID', res.data.id)
+                  })
                   .catch(err => console.error(err))
 
                 const result = await axios({
