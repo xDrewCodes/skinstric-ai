@@ -64,11 +64,7 @@ const Analysis = ({ demos }) => {
 
         console.log(userId, localName, localLocation)
 
-        await axios.post(`${API_URL}/users/${userId}`, null, {
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
-        })
+        await axios.get(`${API_URL}/users/${userId}`)
             .then(res => console.log(res))
             .catch(err => console.error(err))
 

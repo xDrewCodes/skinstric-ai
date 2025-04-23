@@ -1,4 +1,4 @@
-import { editUser } from '../../lib/dbUtils'  // or wherever your function lives
+import { editUser } from '../../dbUtilsjs.js'  // or wherever your function lives
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
