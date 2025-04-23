@@ -39,6 +39,7 @@ async function getUsers() {
 }
 
 async function getUser(id: string) {
+    console.log(id)
     try {
         const user = await prisma.user.findUnique({
             where: {

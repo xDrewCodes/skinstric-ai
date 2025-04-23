@@ -104,20 +104,23 @@ function getUser(id) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
+                    console.log(id);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
                     return [4 /*yield*/, prisma.user.findUnique({
                             where: {
                                 id: id
                             }
                         })];
-                case 1:
+                case 2:
                     user = _a.sent();
                     console.log(user);
                     return [2 /*return*/, user];
-                case 2:
+                case 3:
                     error_3 = _a.sent();
                     return [2 /*return*/, 'issue finding user'];
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });

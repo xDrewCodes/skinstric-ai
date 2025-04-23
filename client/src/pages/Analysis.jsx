@@ -64,7 +64,7 @@ const Analysis = ({ demos }) => {
 
         console.log(userId, localName, localLocation)
 
-        await axios.get(`${API_URL}/users/${userId}`)
+        await axios.get(`${API_URL}/user/${userId}`)
             .then(res => console.log(res))
             .catch(err => console.error(err))
 
