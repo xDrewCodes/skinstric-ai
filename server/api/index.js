@@ -1,28 +1,25 @@
 
 const express = require('express')
 const path = require('path')
-const dbu = require('../server/dbUtilsjs.js')
+const dbu = require('../dbUtilsjs.js')
 
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(express.static(path.join(__dirname, '../build')))
+//app.use(express.static(path.join(__dirname, '../../client/build')))
 
 app.get('/api/users', async ( req, res ) => {
 
     const users = await dbu.getUsers()
-
     res.send(users)
 })
 
 app.get('/api/users/:id', async ( req, res ) => {
 
     const userId = req.params.id
-
     console.log(userId)
 
     const user = await dbu.getUser(userId)
-
     res.json(user)
 
 })
@@ -34,7 +31,6 @@ app.post('/api/create', async ( req, res ) => {
     const loc = req.query.location
 
     const createdUser = await dbu.createUser(name, loc)
-
     res.send(createdUser)
 
 })
