@@ -46,22 +46,6 @@ const Analysis = ({ demos, setDemos }) => {
 
         if (demos) {
 
-            const races = Object.entries(demos.race)
-                .map(item => [item[0], (item[1] * 100).toFixed(2)])
-                .sort((a, b) => b[1] - a[1])
-
-            const ages = Object.entries(demos.age)
-                .map(item => [item[0], (item[1] * 100).toFixed(2)])
-                .sort((a, b) => b[1] - a[1])
-
-            const genders = Object.entries(demos.gender)
-                .map(item => [item[0], (item[1] * 100).toFixed(2)])
-                .sort((a, b) => b[1] - a[1])
-
-            let raceCurrent = races[0][0]
-            let ageCurrent = ages[0][0]
-            let genderCurrent = genders[0][0]
-
             setDemoPerc(demos[demo][localStorage.getItem('race')] * 100)
         } // eslint-disable-next-line
     }, [])
