@@ -30,6 +30,7 @@ const Analysis = ({ demos, setDemos }) => {
             })
 
             setDemos(res.data.demos)
+            setDemoPerc(res.data.demos[demo][res.data.race] * 100)
 
         }).catch(err => console.error(err))
     }
@@ -46,7 +47,6 @@ const Analysis = ({ demos, setDemos }) => {
 
         if (demos) {
 
-            setDemoPerc(demos[demo][localStorage.getItem('race')] * 100)
         } // eslint-disable-next-line
     }, [])
 
@@ -97,7 +97,8 @@ const Analysis = ({ demos, setDemos }) => {
             'age': localStorage.getItem('age'),
             'sex': localStorage.getItem('sex')
         })
-        setDemoPerc(demos[demo][localStorage.getItem(demo)] * 100)
+
+        setDemoPerc(demos[demo][currents.race] * 100)
         setEditing(false)
     }
 
