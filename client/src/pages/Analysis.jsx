@@ -23,8 +23,6 @@ const Analysis = ({ demos, setDemos }) => {
     async function initDemos() {
         await axios.get(`${API_URL}/user/${userId}`).then(res => {
 
-            console.log('thing')
-            
             setCurrents({
                 race: res.data.race,
                 age: res.data.age,
@@ -38,7 +36,6 @@ const Analysis = ({ demos, setDemos }) => {
 
     useEffect(() => {
         initDemos() // eslint-disable-next-line
-        console.log('init currents', currents)
     }, [])
 
     let navigate = useNavigate()

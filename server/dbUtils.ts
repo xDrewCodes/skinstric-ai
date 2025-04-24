@@ -4,8 +4,6 @@ import { Prisma } from './generated/prisma/client'
 const prisma = new PrismaClient()
 
 async function createUser(userName: string, userLoc: string) {
-    console.log(userName)
-    console.log(userLoc)
     try {
         const userCheck = await prisma.user.findMany({
             where: {
@@ -36,7 +34,6 @@ async function createUser(userName: string, userLoc: string) {
 
 async function getUsers() {
     try {
-        console.log(await prisma.user.findMany())
         return await prisma.user.findMany()
     } catch (error) {
         console.log('unable to fetch users')
@@ -44,7 +41,6 @@ async function getUsers() {
 }
 
 async function getUser(id: string) {
-    console.log(id)
     try {
         const user = await prisma.user.findUnique({
             where: {
@@ -52,7 +48,6 @@ async function getUser(id: string) {
             }
         })
 
-        console.log(user)
         return user
 
     } catch (error) {

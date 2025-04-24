@@ -44,62 +44,54 @@ function createUser(userName, userLoc) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(userName);
-                    console.log(userLoc);
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 7, , 8]);
+                    _a.trys.push([0, 6, , 7]);
                     return [4 /*yield*/, prisma.user.findMany({
                             where: {
                                 name: userName,
                                 location: userLoc
                             }
                         })];
-                case 2:
+                case 1:
                     userCheck = _a.sent();
-                    if (!(userCheck.length == 0)) return [3 /*break*/, 4];
+                    if (!(userCheck.length == 0)) return [3 /*break*/, 3];
                     return [4 /*yield*/, prisma.user.create({
                             data: {
                                 name: userName,
                                 location: userLoc
                             }
                         })];
-                case 3: return [2 /*return*/, _a.sent()];
-                case 4: return [4 /*yield*/, prisma.user.findFirst({
+                case 2: return [2 /*return*/, _a.sent()];
+                case 3: return [4 /*yield*/, prisma.user.findFirst({
                         where: {
                             name: userName,
                             location: userLoc
                         }
                     })];
-                case 5: return [2 /*return*/, _a.sent()];
-                case 6: return [3 /*break*/, 8];
-                case 7:
+                case 4: return [2 /*return*/, _a.sent()];
+                case 5: return [3 /*break*/, 7];
+                case 6:
                     error_1 = _a.sent();
                     console.log('error adding user');
-                    return [3 /*break*/, 8];
-                case 8: return [2 /*return*/];
+                    return [3 /*break*/, 7];
+                case 7: return [2 /*return*/];
             }
         });
     });
 }
 function getUsers() {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, _b, error_2;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        var error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    _c.trys.push([0, 3, , 4]);
-                    _b = (_a = console).log;
+                    _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, prisma.user.findMany()];
-                case 1:
-                    _b.apply(_a, [_c.sent()]);
-                    return [4 /*yield*/, prisma.user.findMany()];
-                case 2: return [2 /*return*/, _c.sent()];
-                case 3:
-                    error_2 = _c.sent();
+                case 1: return [2 /*return*/, _a.sent()];
+                case 2:
+                    error_2 = _a.sent();
                     console.log('unable to fetch users');
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
@@ -110,23 +102,19 @@ function getUser(id) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(id);
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, prisma.user.findUnique({
                             where: {
                                 id: id
                             }
                         })];
-                case 2:
+                case 1:
                     user = _a.sent();
-                    console.log(user);
                     return [2 /*return*/, user];
-                case 3:
+                case 2:
                     error_3 = _a.sent();
                     return [2 /*return*/, 'issue finding user'];
-                case 4: return [2 /*return*/];
+                case 3: return [2 /*return*/];
             }
         });
     });
