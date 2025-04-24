@@ -22,12 +22,24 @@ const Analysis = ({ demos, setDemos }) => {
 
     async function initDemos() {
         await axios.get(`${API_URL}/user/${userId}`).then(res => {
+
+            console.log('thing')
+            
+            setCurrents({
+                race: res.data.race,
+                age: res.data.age,
+                sex: res.data.gender
+            })
+
             setDemos(res.data.demos)
-            localStorage.setItem('race', res.data.race)
-            localStorage.setItem('age', res.data.age)
-            localStorage.setItem('sex', res.data.gender)
+
         }).catch(err => console.error(err))
     }
+
+    useEffect(() => {
+        initDemos() // eslint-disable-next-line
+        console.log('init currents', currents)
+    }, [])
 
     let navigate = useNavigate()
 
@@ -53,26 +65,9 @@ const Analysis = ({ demos, setDemos }) => {
             let ageCurrent = ages[0][0]
             let genderCurrent = genders[0][0]
 
-            if (!localStorage.getItem('race')) {
-                setCurrents({
-                    race: raceCurrent,
-                    age: ageCurrent,
-                    sex: genderCurrent
-                })
-            } else {
-
-                raceCurrent = localStorage.getItem('race')
-
-                setCurrents({
-                    race: localStorage.getItem('race'),
-                    age: localStorage.getItem('age'),
-                    sex: localStorage.getItem('sex')
-                })
-            }
-
-            setDemoPerc(demos[demo][raceCurrent] * 100)
+            setDemoPerc(demos[demo][localStorage.getItem('race')] * 100)
         } // eslint-disable-next-line
-    }, [demos])
+    }, [])
 
     async function dbWrite() {
 
@@ -99,7 +94,7 @@ const Analysis = ({ demos, setDemos }) => {
             demos: demos
         })
             .then(res => true)
-            .catch(err => console.error(err));
+            .catch(err => console.error(err))
     }
 
     function updateCurrent(key, value) {

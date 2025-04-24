@@ -9,7 +9,7 @@ import CameraIcon from '../assets/imports/shutter.png'
 import GalleryIcon from '../assets/imports/gallery.png'
 import VideoCamera from '../assets/imports/video-button.png'
 import VideoPointer from '../assets/imports/video-pointer.png'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useOutlineAnim } from '../anim'
 import gsap from 'gsap'
@@ -19,16 +19,23 @@ const Upload = ({ demos, setDemos }) => {
 
     const [isRecording, setIsRecording] = useState(false)
     const [isSelecting, setIsSelecting] = useState(false)
+    const [showProceed, setShowProceed] = useState(!!localStorage.getItem('race'))
     useOutlineAnim()
 
     const API_URL = process.env.REACT_APP_BACKEND_URL
-    const userId = localStorage.getItem('skinstricID')
 
-    async function initDemos() {
-        await axios.get(`${API_URL}/user/${userId}`).then(res => setDemos(res.data.demos)).catch(err => console.error(err))
+    async function initCurrents() {
+        await axios.get(`${API_URL}/user/${localStorage.getItem('skinstricID')}`)
+            .then(res => {
+                if (!!res.data.race) {
+                    localStorage.setItem('race', res.data.race)
+                    localStorage.setItem('age', res.data.age)
+                    localStorage.setItem('sex', res.data.gender)
+                    setShowProceed(true)
+                }
+            })
+            .catch(err => console.error(err))
     }
-
-    if (!!userId && !demos) { initDemos() }
 
     let navigate = useNavigate()
 
@@ -114,9 +121,42 @@ const Upload = ({ demos, setDemos }) => {
         })
         setDemos(result.data.data)
 
-        localStorage.removeItem('race')
-        localStorage.removeItem('age')
-        localStorage.removeItem('sex')
+        const races = Object.entries(result.data.data.race)
+            .map(item => [item[0], (item[1] * 100).toFixed(2)])
+            .sort((a, b) => b[1] - a[1])
+
+        const ages = Object.entries(result.data.data.age)
+            .map(item => [item[0], (item[1] * 100).toFixed(2)])
+            .sort((a, b) => b[1] - a[1])
+
+        const genders = Object.entries(result.data.data.gender)
+            .map(item => [item[0], (item[1] * 100).toFixed(2)])
+            .sort((a, b) => b[1] - a[1])
+
+        const currUser = await axios.get(`${API_URL}/user/${localStorage.getItem('skinstricID')}`).catch(err => console.error(err))
+
+        let currentRace = races[0][0]
+        let currentAge = ages[0][0]
+        let currentSex = genders[0][0]
+
+        if (currUser.data.race) {
+            currentRace = currUser.data.race
+            currentAge = currUser.data.age
+            currentSex = currUser.data.gender
+        }
+
+        await axios.post(`${API_URL}/edit/${localStorage.getItem('skinstricID')}`, {
+
+            race: currentRace,
+            age: currentAge,
+            gender: currentSex,
+            demos: result.data.data
+        })
+            .catch(err => console.error(err))
+
+        localStorage.setItem('race', currentRace)
+        localStorage.setItem('age', currentAge)
+        localStorage.setItem('sex', currentSex)
 
         navigate('/analysis-menu')
     }
@@ -125,6 +165,10 @@ const Upload = ({ demos, setDemos }) => {
         gsap.timeline()
             .from('#upload', { opacity: 0, duration: 1 })
     })
+
+    useEffect(() => {
+        initCurrents()
+    }, [])
 
     return (
         <section id="upload">
@@ -183,10 +227,10 @@ const Upload = ({ demos, setDemos }) => {
 
                     <BackButton loc="/introduction" />
 
-                            {
-                                !!demos &&
-                                <ProceedButton loc="/analysis-menu" proceed="true" />
-                            }
+                    {
+                        showProceed &&
+                        <ProceedButton loc="/analysis-menu" proceed="true" />
+                    }
 
                 </>
                 :

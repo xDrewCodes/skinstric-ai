@@ -37,7 +37,6 @@ const Location = ({ setIsIntro }) => {
                 })
                     .then(res => {
                         localStorage.setItem('skinstricID', res.data.id)
-                        console.log(res)
                     })
                     .catch(err => console.error(err))
 
